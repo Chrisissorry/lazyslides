@@ -1,0 +1,62 @@
+/* ============================================
+   DEFAULT THEME
+   The built-in LazySlides theme using sky blue primary colors.
+   Copy this file to create a custom theme.
+
+   Usage: Add `theme: your-theme-name` to presentation frontmatter
+   ============================================ */
+
+:root {
+  /* ----------------------------------------
+     TYPOGRAPHY
+     Override to use different fonts for this CI.
+     ---------------------------------------- */
+
+  /* Heading font - used for h1-h4, quote blockquotes, metric values */
+  /* --font-heading: 'Playfair Display', serif; */
+
+  /* Body font - used for paragraphs, lists, labels, footer */
+  /* --font-body: 'Inter', sans-serif; */
+
+  /* If using Google Fonts, add @import at the top of this file:
+     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+  */
+
+  /* ----------------------------------------
+     PRIMARY COLOR SCALE
+     The main accent color used throughout the presentation.
+     Define a scale from light (50) to dark (700).
+     ---------------------------------------- */
+
+  /* Light tints - used for backgrounds, hover states */
+  --color-primary-50: #f0f9ff;   /* Lightest tint */
+  --color-primary-100: #e0f2fe;  /* Light background */
+  --color-primary-200: #bae6fd;  /* Quote marks, subtle accents */
+
+  /* Core colors - main accent usage */
+  --color-primary-400: #38bdf8;  /* Decorative elements */
+  --color-primary-500: #0ea5e9;  /* Primary accent (buttons, links, markers) */
+  --color-primary-600: #0284c7;  /* Hover states, emphasis */
+  --color-primary-700: #0369a1;  /* Headings, strong accents */
+
+  /* ----------------------------------------
+     FOOTER BRANDING
+     Customize the footer for this CI.
+     ---------------------------------------- */
+
+  /* Brand name displayed in footer center */
+  --footer-brand-name: 'lazyslides';
+
+  /* Custom logo - set to a URL to replace the default gradient icon */
+  /* --footer-logo-url: url('/assets/images/brands/your-logo.svg'); */
+}
+
+/* ----------------------------------------
+   THEATER BACKGROUND
+   The gradient behind the slide cards.
+   ---------------------------------------- */
+
+html, body {
+  /* Default: warm gray to light primary tint */
+  background: linear-gradient(135deg, #f1f5f9 0%, var(--color-primary-50) 100%);
+}

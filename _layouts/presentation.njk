@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title | default("Presentation") }} | {{ site.title }}</title>
+
+  <!-- Google Fonts: Source Serif 4 & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="/assets/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="/assets/reveal.js/dist/reveal.css">
+
+  <!-- Tailwind CSS (structural styles) -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <!-- Theme CSS (design tokens) -->
+  {% set theme_name = theme | default('default') %}
+  <link rel="stylesheet" href="/assets/css/themes/{{ theme_name }}.css">
+
+  <!-- Code highlighting theme -->
+  <link rel="stylesheet" href="/assets/reveal.js/plugin/highlight/monokai.css">
+
+  <!-- GLightbox for image lightbox -->
+  <link rel="stylesheet" href="/assets/css/vendor/glightbox.min.css">
+</head>
+<body>
+  <!-- Exit button to return to presentations index -->
+  <a href="/presentations/"
+     class="exit-button"
+     title="Exit to presentations list">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+
+  <div class="reveal">
+    <div class="slides">
+      {% for slide in slides %}
+        {% set slide_index = loop.index %}
+        {% set total_slides = slides | length %}
+        {% set presentation_title = title %}
+        {% include "slides/" + slide.template + ".njk" %}
+      {% endfor %}
+    </div>
+
+    <!-- Section dots integrated into progress bar -->
+    <div class="section-progress-dots"></div>
+  </div>
+
+  <!-- Reveal.js -->
+  <script src="/assets/reveal.js/dist/reveal.js"></script>
+
+  <!-- Plugins -->
+  <script src="/assets/reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="/assets/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="/assets/reveal.js/plugin/notes/notes.js"></script>
+
+  <!-- Convert newlines to <br/> in speaker notes for proper line breaks -->
+  <script>
+    document.querySelectorAll('aside.notes').forEach(note => {
+      note.innerHTML = note.innerHTML.trim().replace(/\n/g, '<br/>');
+    });
+  </script>
+
+  <script>
+    // Detect PDF export mode via query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPdfExport = urlParams.has('pdf');
+    if (isPdfExport) {
+      document.body.classList.add('pdf-export');
+    }
+
+    Reveal.initialize({
+      // Presentation size (16:9)
+      width: {{ width | default(960) }},
+      height: {{ height | default(540) }},
+
+      // Scale settings
+      margin: isPdfExport ? 0 : 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+
+      // Display controls
+      controls: isPdfExport ? false : {{ controls | default(true) }},
+      controlsTutorial: {{ controlsTutorial | default(false) }},
+      controlsLayout: '{{ controlsLayout | default("bottom-right") }}',
+
+      // Progress bar
+      progress: isPdfExport ? false : {{ progress | default(true) }},
+
+      // Slide number
+      slideNumber: {{ slideNumber | default(false) }},
+
+      // Push each slide to browser history
+      history: {{ history | default(true) }},
+
+      // Keyboard navigation
+      keyboard: {{ keyboard | default(true) }},
+
+      // Enable touch navigation
+      touch: {{ touch | default(true) }},
+
+      // Loop presentation
+      loop: {{ loop | default(false) }},
+
+      // Randomize slide order
+      shuffle: {{ shuffle | default(false) }},
+
+      // Fragments
+      fragments: {{ fragments | default(true) }},
+
+      // Embedded mode
+      embedded: {{ embedded | default(false) }},
+
+      // Help overlay
+      help: {{ help | default(true) }},
+
+      // Pause presentation
+      pause: {{ pause | default(true) }},
+
+      // Show notes to all viewers
+      showNotes: {{ showNotes | default(false) }},
+
+      // Transition style
+      transition: '{{ transition | default("slide") }}',
+
+      // Transition speed
+      transitionSpeed: '{{ transitionSpeed | default("default") }}',
+
+      // Background transition
+      backgroundTransition: '{{ backgroundTransition | default("fade") }}',
+
+      // Vertical centering (disabled - we handle layout per slide type)
+      center: false,
+
+      // Auto-slide (0 = disabled)
+      autoSlide: {{ autoSlide | default(0) }},
+
+      // Auto-slide stoppable
+      autoSlideStoppable: {{ autoSlideStoppable | default(true) }},
+
+      // Mouse wheel navigation
+      mouseWheel: {{ mouseWheel | default(false) }},
+
+      // Preview links
+      previewLinks: {{ previewLinks | default(false) }},
+
+      // View distance (for lazy loading)
+      viewDistance: {{ viewDistance | default(3) }},
+
+      // Mobile view distance
+      mobileViewDistance: {{ mobileViewDistance | default(2) }},
+
+      // Plugins
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+  </script>
+
+  <!-- GLightbox for image lightbox -->
+  <script src="/assets/js/vendor/glightbox.min.js"></script>
+  <script>
+    Reveal.on('ready', function() {
+      GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        closeOnOutsideClick: true
+      });
+    });
+  </script>
+
+  <!-- Section progress indicator - dots integrated into progress bar -->
+  <script>
+    Reveal.on('ready', function() {
+      // Find all section slides and build section boundaries
+      const sectionSlides = Reveal.getSlides().filter(slide => slide.classList.contains('slide-section'));
+      if (sectionSlides.length === 0) return;
+
+      const totalSlides = Reveal.getTotalSlides();
+
+      const sections = sectionSlides.map((el, i) => ({
+        title: el.querySelector('.subtitle')?.textContent || el.querySelector('h2')?.textContent || `Section ${i + 1}`,
+        index: Reveal.getIndices(el).h,
+        // Calculate percentage position along progress bar
+        position: (Reveal.getIndices(el).h / (totalSlides - 1)) * 100
+      }));
+
+      // Create dots in the progress bar container
+      const dotsContainer = document.querySelector('.section-progress-dots');
+      if (!dotsContainer) return;
+
+      // Create start dot at position 0
+      const startDot = document.createElement('span');
+      startDot.className = 'section-dot';
+      startDot.dataset.section = 'start';
+      startDot.dataset.tooltip = 'Start';
+      startDot.style.left = '1%';
+      startDot.onclick = () => Reveal.slide(0);
+      dotsContainer.appendChild(startDot);
+
+      sections.forEach((s, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'section-dot';
+        dot.dataset.section = i;
+        dot.dataset.tooltip = `${i + 1}/${sections.length}: ${s.title}`;
+        dot.style.left = `${s.position}%`;
+        dot.onclick = () => Reveal.slide(s.index);
+        dotsContainer.appendChild(dot);
+      });
+
+      // Update active dot on slide change
+      function updateDots() {
+        const current = Reveal.getIndices().h;
+        const firstSectionIndex = sections[0]?.index ?? Infinity;
+
+        document.querySelectorAll('.section-progress-dots .section-dot').forEach(dot => {
+          if (dot.dataset.section === 'start') {
+            // Start dot active when before first section
+            dot.classList.toggle('active', current < firstSectionIndex);
+          } else {
+            const dotSection = parseInt(dot.dataset.section, 10);
+            // Find which section we're in (last section whose index <= current)
+            let activeSection = -1;
+            sections.forEach((s, i) => {
+              if (current >= s.index) activeSection = i;
+            });
+            dot.classList.toggle('active', dotSection === activeSection);
+          }
+        });
+      }
+
+      Reveal.on('slidechanged', updateDots);
+      updateDots(); // Set initial state
+    });
+  </script>
+</body>
+</html>

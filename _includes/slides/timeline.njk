@@ -1,0 +1,30 @@
+{# TEMPLATE: timeline — Horizontal timeline with alternating above/below event cards. #}
+<section class="slide-timeline">
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <div class="timeline-wrapper">
+      <div class="timeline-axis"></div>
+      <div class="timeline-events">
+        {% for event in slide.events %}
+        {% set remainder = loop.index % 2 %}
+        <div class="timeline-event {% if remainder == 1 %}above{% else %}below{% endif %}">
+          <div class="event-dot"></div>
+          <div class="event-connector"></div>
+          <div class="event-card">
+            {% if event.date %}<div class="event-date">{{ event.date }}</div>{% endif %}
+            <div class="event-title">{{ event.title }}</div>
+            {% if event.text %}<div class="event-text">{{ event.text }}</div>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

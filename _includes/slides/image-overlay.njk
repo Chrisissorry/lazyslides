@@ -1,0 +1,21 @@
+{# TEMPLATE: image-overlay — Full background image with positioned text box overlay. #}
+{% set img_src = slide.image | resolveImage %}
+<section class="slide-image-overlay" data-background-image="{{ img_src }}" data-background-size="cover">
+  <div class="slide-body">
+    <div class="overlay-box {{ slide.position | default('bottom-left') }}">
+      {% if slide.title %}<h3>{{ slide.title }}</h3>{% endif %}
+      {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}
+      {% if slide.items %}
+      <ul>
+        {% for item in slide.items %}<li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

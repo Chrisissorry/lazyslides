@@ -1,0 +1,16 @@
+{# TEMPLATE: center — Centered statement, image, or both. Image has lightbox on click. #}
+<section class="slide-center">
+  <div class="slide-body">
+    {% if slide.title %}<h2>{{ slide.title }}</h2>{% endif %}
+    {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}
+    {% if slide.image %}
+    {% set img_src = slide.image | resolveImage %}
+    <a href="{{ img_src }}" class="glightbox"><img src="{{ img_src }}" alt="{{ slide.image_alt | default('') }}"></a>
+    {% endif %}
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

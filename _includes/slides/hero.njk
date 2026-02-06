@@ -1,0 +1,27 @@
+{# TEMPLATE: hero — Full-bleed background image with dark overlay and optional text box. #}
+{% if slide.image %}{% set img_src = slide.image | resolveImage %}{% endif %}
+<section class="slide-hero"{% if slide.image %} style="background-image: url('{{ img_src }}'); background-size: cover; background-position: center;"{% elif slide.color %} style="background-color: {{ slide.color }};"{% endif %}>
+  <div class="slide-body">
+    <h1>{{ slide.title }}</h1>
+    {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}
+    {% if slide.box_title or slide.box_text or slide.box_items %}
+    <div class="text-box">
+      {% if slide.box_title %}<h3>{{ slide.box_title }}</h3>{% endif %}
+      {% if slide.box_text %}<p>{{ slide.box_text }}</p>{% endif %}
+      {% if slide.box_items %}
+      <ul>
+        {% for item in slide.box_items %}<li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% if not slide.hide_footer %}
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+  {% endif %}
+</section>

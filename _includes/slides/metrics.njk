@@ -1,0 +1,27 @@
+{# TEMPLATE: metrics — Key statistics display with 2-4 metric cards. #}
+<section class="slide-metrics">
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+      {% if slide.subtitle %}<p class="subtitle">{{ slide.subtitle }}</p>{% endif %}
+    </div>
+    {% set metric_count = slide.metrics | length %}
+    {% if metric_count == 2 %}{% set cols_class = "cols-2" %}
+    {% elif metric_count == 4 %}{% set cols_class = "cols-4" %}
+    {% else %}{% set cols_class = "cols-3" %}{% endif %}
+    <div class="metrics-grid {{ cols_class }}">
+      {% for metric in slide.metrics %}
+      <div class="metric-card">
+        <div class="value{% if metric.color %} {{ metric.color }}{% endif %}">{{ metric.value }}</div>
+        <div class="label">{{ metric.label }}</div>
+        {% if metric.context %}<div class="context">{{ metric.context }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

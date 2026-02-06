@@ -1,0 +1,3 @@
+@import "lazyslides/styles.css";
+@source "../presentations/**/*.md";
+/* custom styles below */

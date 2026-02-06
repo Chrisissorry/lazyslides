@@ -1,0 +1,35 @@
+{# TEMPLATE: columns — Two-column layout for side-by-side content. #}
+<section class="slide-columns">
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <div class="columns">
+      <div class="column">
+        {% if slide.left_title %}<h3>{{ slide.left_title }}</h3>{% endif %}
+        {% if slide.left_text %}<p>{{ slide.left_text }}</p>{% endif %}
+        {% if slide.left_items %}
+        <ul>
+          {% for item in slide.left_items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="column">
+        {% if slide.right_title %}<h3>{{ slide.right_title }}</h3>{% endif %}
+        {% if slide.right_text %}<p>{{ slide.right_text }}</p>{% endif %}
+        {% if slide.right_items %}
+        <ul>
+          {% for item in slide.right_items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

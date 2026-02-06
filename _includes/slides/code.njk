@@ -1,0 +1,15 @@
+{# TEMPLATE: code — Code snippet display with syntax highlighting. #}
+<section class="slide-code">
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <pre><code class="language-{{ slide.language | default('javascript') }}" data-trim data-noescape>{{ slide.code }}</code></pre>
+    {% if slide.caption %}<p class="caption">{{ slide.caption }}</p>{% endif %}
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

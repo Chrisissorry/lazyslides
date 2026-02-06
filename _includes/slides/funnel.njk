@@ -1,0 +1,30 @@
+{# TEMPLATE: funnel — Progressive narrowing funnel with stage labels and annotations. #}
+<section class="slide-funnel">
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <div class="funnel-wrapper">
+      <div class="funnel-grid">
+        {% for stage in slide.stages %}
+        <div class="funnel-row">
+          <div class="funnel-stage-wrapper">
+            <div class="funnel-stage stage-{{ loop.index }}">
+              <span class="stage-label">{{ stage.label }}</span>
+            </div>
+          </div>
+          <div class="funnel-annotation">
+            <span class="annotation-arrow">→</span>
+            <span class="annotation-text">{{ stage.text }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+</section>

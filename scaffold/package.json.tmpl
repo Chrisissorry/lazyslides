@@ -1,0 +1,25 @@
+{
+  "name": "{{name}}",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "lazyslides validate && concurrently \"pnpm:watch:*\"",
+    "watch:css": "tailwindcss -i src/styles.css -o _site/assets/css/styles.css --watch",
+    "watch:11ty": "eleventy --serve",
+    "build": "lazyslides validate && pnpm run build:css && pnpm run build:11ty",
+    "build:css": "tailwindcss -i src/styles.css -o _site/assets/css/styles.css",
+    "build:11ty": "eleventy",
+    "validate": "lazyslides validate",
+    "renumber": "lazyslides renumber",
+    "pdf": "lazyslides pdf"
+  },
+  "dependencies": {
+    "lazyslides": "^2.0.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/cli": "^4.0.0",
+    "concurrently": "^9.0.0",
+    "tailwindcss": "^4.1.18"
+  }
+}

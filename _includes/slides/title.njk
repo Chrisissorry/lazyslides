@@ -1,0 +1,17 @@
+{# TEMPLATE: title — Opening slide with logo, title, subtitle, and author. #}
+<section class="slide-title">
+  {% if slide.logo != false %}
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+  </div>
+  {% endif %}
+  <h1>{{ slide.title }}</h1>
+  {% if slide.subtitle %}<p class="subtitle">{{ slide.subtitle }}</p>{% endif %}
+  <div class="decorative-line"></div>
+  {% if slide.author %}<p class="author">{{ slide.author }}</p>{% endif %}
+  {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+</section>
