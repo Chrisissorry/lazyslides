@@ -28,7 +28,7 @@ describe("init", () => {
     const expected = [
       "eleventy.config.js",
       "src/styles.css",
-      "presentations/presentations.json",
+      "presentations/presentations.11tydata.js",
       "presentations/_template/index.md",
       "presentations/my-first-deck/index.md",
       "themes/.gitkeep",

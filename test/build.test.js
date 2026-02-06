@@ -20,4 +20,11 @@ describe("build smoke test", () => {
       expect(fs.existsSync(full), `missing: ${file}`).toBe(true);
     }
   });
+
+  it("does not output non-index markdown files as presentations", () => {
+    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 25_000 });
+
+    const outlineOutput = path.join(root, "_site/presentations/outline/index.html");
+    expect(fs.existsSync(outlineOutput), "outline.md should not produce output").toBe(false);
+  });
 });

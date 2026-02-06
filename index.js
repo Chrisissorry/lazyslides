@@ -68,6 +68,13 @@ export default function lazyslides(eleventyConfig, options = {}) {
   eleventyConfig.addPassthroughCopy("presentations/*/images");
 
   // ---------------------------------------------------------------
+  // 3b. Collection — only index.md files are presentations
+  // ---------------------------------------------------------------
+  eleventyConfig.addCollection("presentations", (collectionApi) => {
+    return collectionApi.getFilteredByGlob("presentations/*/index.md");
+  });
+
+  // ---------------------------------------------------------------
   // 4. Global data — site.title with option override
   // ---------------------------------------------------------------
   const siteData = JSON.parse(
@@ -124,7 +131,7 @@ eleventyExcludeFromCollections: true
 ---
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="refresh" content="0; url={{ '/presentations/' | url }}"></head>
+<head><meta http-equiv="refresh" content="0; url={{ '/presentations/example/' | url }}"></head>
 <body></body>
 </html>
 `);

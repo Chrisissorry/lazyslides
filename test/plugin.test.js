@@ -7,6 +7,7 @@ function createMockConfig() {
     templates: {},
     passthroughCopies: [],
     globalData: {},
+    collections: {},
     ignores: new Set(),
     amendLibraryCalls: [],
   };
@@ -23,6 +24,9 @@ function createMockConfig() {
     },
     addGlobalData(key, value) {
       calls.globalData[key] = value;
+    },
+    addCollection(name, fn) {
+      calls.collections[name] = fn;
     },
     addTemplate(name, content) {
       calls.templates[name] = content;
@@ -77,6 +81,10 @@ describe("plugin registration", () => {
   it("adds site global data", () => {
     expect(calls.globalData.site).toBeDefined();
     expect(calls.globalData.site.title).toBeDefined();
+  });
+
+  it("registers presentations collection", () => {
+    expect(calls.collections.presentations).toBeTypeOf("function");
   });
 });
 
