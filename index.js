@@ -105,7 +105,7 @@ permalink: /presentations/
 
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
   {% for presentation in collections.presentations %}
-  <a href="{{ presentation.url }}" style="display: block; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; background: white;">
+  <a href="{{ presentation.url | url }}" style="display: block; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; background: white;">
     <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; font-weight: 600; color: #0f172a; margin: 0 0 0.5rem 0;">{{ presentation.data.title }}</h2>
     {% if presentation.data.description %}
     <p style="font-size: 0.85rem; color: #64748b; margin: 0;">{{ presentation.data.description }}</p>
