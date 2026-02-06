@@ -4,11 +4,28 @@
   "description": "AI-native presentations from YAML — Eleventy plugin with Reveal.js",
   "license": "MIT",
   "author": "Chris Tietz",
-  "keywords": ["presentations", "slides", "reveal.js", "eleventy", "yaml", "tailwind", "ai", "claude", "slide-deck"],
-  "repository": { "type": "git", "url": "git+https://github.com/Chrisissorry/lazyslides.git" },
+  "keywords": [
+    "presentations",
+    "slides",
+    "reveal.js",
+    "eleventy",
+    "yaml",
+    "tailwind",
+    "ai",
+    "claude",
+    "slide-deck"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chrisissorry/lazyslides.git"
+  },
   "homepage": "https://github.com/Chrisissorry/lazyslides",
-  "bugs": { "url": "https://github.com/Chrisissorry/lazyslides/issues" },
-  "engines": { "node": ">=22" },
+  "bugs": {
+    "url": "https://github.com/Chrisissorry/lazyslides/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -36,6 +53,8 @@
     "build": "node cli.js validate && pnpm run build:css && pnpm run build:11ty",
     "build:css": "pnpm exec tailwindcss -i src/styles.css -o _site/assets/css/styles.css",
     "build:11ty": "pnpm exec eleventy",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "validate": "node cli.js validate",
     "renumber": "node cli.js renumber",
     "pdf": "node cli.js pdf"
@@ -51,7 +70,8 @@
     "@tailwindcss/cli": "^4.0.0",
     "concurrently": "^9.0.0",
     "decktape": "^3.14.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "vitest": "^4.0.18"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

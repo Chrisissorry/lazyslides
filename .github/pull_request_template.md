@@ -12,6 +12,7 @@ How was this implemented? Any notable design decisions?
 
 ## Checklist
 
+- [ ] `pnpm test` passes
 - [ ] `pnpm run validate` passes
 - [ ] `pnpm run build` succeeds
 - [ ] Updated docs if adding features

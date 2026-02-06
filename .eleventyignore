@@ -2,3 +2,5 @@ AGENTS.md
 CHANGELOG.md
 SECURITY.md
 CONTRIBUTING.md
+test/
+vitest.config.js
