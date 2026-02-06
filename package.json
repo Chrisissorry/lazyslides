@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "AI-native presentations from YAML — Eleventy plugin with Reveal.js",
   "license": "MIT",
+  "author": "Chris Tietz",
+  "keywords": ["presentations", "slides", "reveal.js", "eleventy", "yaml", "tailwind", "ai", "claude", "slide-deck"],
+  "repository": { "type": "git", "url": "git+https://github.com/Chrisissorry/lazyslides.git" },
+  "homepage": "https://github.com/Chrisissorry/lazyslides",
+  "bugs": { "url": "https://github.com/Chrisissorry/lazyslides/issues" },
+  "engines": { "node": ">=22" },
   "type": "module",
   "main": "index.js",
   "exports": {

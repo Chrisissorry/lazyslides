@@ -1,10 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-LazySlides is an npm package (`lazyslides`) that provides an Eleventy plugin + CLI for creating Reveal.js slide decks from pure YAML. Presentations are authored in YAML, rendered through Nunjucks templates, and styled with Tailwind CSS 4.x.
+This file provides guidance to Claude Code (claude.ai/code) when working with this LazySlides project.
 
 ## Presentation Authoring Workflow
 
@@ -243,7 +239,7 @@ Images in `center`, `split`, and `split-wide` templates automatically get lightb
 - **Dimensions:** 960x540 (16:9) — Reveal.js scales to fit viewport
 - **Typography:** Source Serif 4 for headings, Plus Jakarta Sans for body
 - **Colors:** Primary is mauve (purple), semantic colors: `mint`, `coral`, `amber`, `icy`
-- **Spacing:** 40px slide padding, design tokens in `src/styles.css` `@theme` block
+- **Spacing:** 40px slide padding
 
 ## Rules for Claude
 
@@ -261,7 +257,6 @@ Images in `center`, `split`, and `split-wide` templates automatically get lightb
 - Create deeply nested lists (max 2 levels)
 - Use template names not in the valid list
 - Reference images that don't exist without marking them as TODOs
-- Modify engine files when asked to edit presentation content
 
 ## Slash Commands
 
@@ -274,22 +269,6 @@ Images in `center`, `split`, and `split-wide` templates automatically get lightb
 | `/create-outline` | Create a structured outline before generating YAML |
 | `/refine-slides` | Review and improve an existing presentation |
 
-## Package Architecture
-
-This repo is both the npm package source and a development environment:
-
-- **`index.js`** — Eleventy plugin entry point (registers filters, templates, layouts, assets)
-- **`cli.js`** — Unified CLI (`lazyslides init|validate|renumber|pdf`)
-- **`lib/`** — CLI module implementations (init, validate, renumber, export-pdf)
-- **`scaffold/`** — Template files copied by `lazyslides init`
-- **`_includes/slides/`** — 17 slide templates + footer + nested list macro
-- **`_layouts/`** — Reveal.js wrapper + index page layout (registered as virtual templates by plugin)
-- **`assets/`** — Vendored Reveal.js, GLightbox, theme CSS
-- **`src/styles.css`** — All design tokens and slide CSS (Tailwind CSS)
-- **`data/site.json`** — Default site data
-- **`presentations/`** — Example presentations (dev only, not published to npm)
-- **`eleventy.config.js`** — Local dev config that uses the plugin from `./index.js`
-
 ## Build Commands
 
 ```bash
@@ -300,23 +279,4 @@ pnpm run renumber     # Renumber slide comments
 pnpm run pdf          # Export to PDF
 ```
 
-Validation runs automatically before dev and build commands.
-
 **Requirements:** Node.js 22 (see `.nvmrc`), install deps with `pnpm install`
-
-## Key Plugin Techniques
-
-- **Nunjucks search paths**: `env.loaders[0].searchPaths.push()` adds package paths after user-local paths
-- **Virtual layouts**: `addTemplate("_layouts/presentation.njk", content)` provides layouts without user needing `_layouts/`
-- **Passthrough copy**: Maps absolute paths from package to output directory
-- **Tailwind `@import`**: User's `src/styles.css` imports `lazyslides/styles.css`, `@source` resolves relative to the imported file
-
-## Validation
-
-`lib/validate.js` checks:
-- Valid YAML syntax
-- Required fields: `title`, `slides`
-- Each slide has a `template` field
-- Template names match the 17 valid types
-- Comparison structure validation
-- Image path existence

@@ -50,3 +50,14 @@ pnpm run build    # Production build
 - Run `pnpm run validate` before submitting
 - Include a screenshot if changing visual output
 - Update docs if adding features
+
+## AI-Assisted Contributions
+
+AI-generated PRs are welcome as first-class contributions. If your PR was created with AI assistance:
+
+1. **Disclose it** — note "AI-assisted" in the PR description
+2. **Test it** — validation must pass (`pnpm run validate`), build must succeed (`pnpm run build`)
+3. **Understand it** — confirm you understand the changes being proposed
+4. **Screenshot it** — include before/after screenshots for any visual changes
+
+AI agents should follow the rules in [AGENTS.md](AGENTS.md) for code and YAML conventions.

@@ -1,10 +1,49 @@
 # LazySlides
 
+[![npm version](https://img.shields.io/npm/v/lazyslides)](https://www.npmjs.com/package/lazyslides)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
+
 **AI-native presentations from YAML.** Write slides in pure YAML, get polished presentations powered by [Reveal.js](https://revealjs.com) and [Tailwind CSS](https://tailwindcss.com).
 
-LazySlides is designed for the agentic workflow — create entire presentations with Claude Code using the `/new-presentation` slash command. No drag-and-drop, no design decisions, just content.
+## Get Started with Claude Code
 
-## Quick Start
+LazySlides is built for the agentic workflow. Create entire presentations with [Claude Code](https://claude.ai/code) — no drag-and-drop, no design decisions, just content.
+
+```bash
+pnpm dlx lazyslides init my-deck
+cd my-deck && pnpm install
+```
+
+Open the project with Claude Code and use the `/new-presentation` command:
+
+```
+> /new-presentation
+```
+
+Claude will:
+1. Gather your topic, audience, and goals
+2. Create a structured outline
+3. Map each slide to the optimal template
+4. Generate complete YAML
+5. Validate and suggest a preview
+
+The project includes a `CLAUDE.md` with the full template schema, so Claude knows every field of every template.
+
+### More commands
+
+| Command | Description |
+|---------|-------------|
+| `/new-presentation` | Create a complete presentation from scratch |
+| `/add-slide` | Add a slide to an existing deck |
+| `/research-topic` | Research a topic for data-driven slides |
+| `/create-outline` | Plan structure before generating YAML |
+| `/refine-slides` | Review and improve an existing presentation |
+| `/validate` | Check YAML and fix issues |
+
+## Manual Quick Start
+
+Prefer working without AI? LazySlides works great on its own:
 
 ```bash
 pnpm dlx lazyslides init my-deck
@@ -13,7 +52,7 @@ pnpm install
 pnpm run dev
 ```
 
-Then open [localhost:8080/presentations/my-first-deck/](http://localhost:8080/presentations/my-first-deck/) to see your first presentation.
+Open [localhost:8080/presentations/my-first-deck/](http://localhost:8080/presentations/my-first-deck/) to see the starter deck. Edit `presentations/my-first-deck/index.md` to start building.
 
 ## Features
 
@@ -26,7 +65,7 @@ Then open [localhost:8080/presentations/my-first-deck/](http://localhost:8080/pr
 - **Section progress dots** — visual navigation for long presentations
 - **PDF export** — one command via DeckTape
 - **Validation** — catches YAML errors before build
-- **Claude Code integration** — `/new-presentation` command for AI-assisted authoring
+- **Claude Code integration** — 6 slash commands for AI-assisted authoring
 
 ## How It Works
 
@@ -64,25 +103,6 @@ slides:
 ---
 ```
 
-### Commands
-
-| Command | Description |
-|---------|-------------|
-| `pnpm run dev` | Start dev server with hot reload |
-| `pnpm run build` | Production build to `_site/` |
-| `pnpm run validate` | Validate all presentation YAML |
-| `pnpm run renumber` | Renumber slide comments |
-| `pnpm run pdf` | Export all presentations to PDF |
-
-### CLI
-
-```bash
-lazyslides init [dir]       # Scaffold a new project
-lazyslides validate         # Validate presentation YAML
-lazyslides renumber [file]  # Renumber slide comments
-lazyslides pdf [name]       # Export to PDF
-```
-
 ## Templates
 
 | Template | Description |
@@ -107,7 +127,7 @@ lazyslides pdf [name]       # Export to PDF
 
 ## Theming
 
-Drop a CSS file into `themes/` in your project to override the default theme:
+Drop a CSS file into `themes/` to override the default theme:
 
 ```css
 :root {
@@ -117,6 +137,27 @@ Drop a CSS file into `themes/` in your project to override the default theme:
 ```
 
 Then set `theme: your-theme-name` in presentation frontmatter.
+
+## Commands & CLI
+
+### npm scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm run dev` | Start dev server with hot reload |
+| `pnpm run build` | Production build to `_site/` |
+| `pnpm run validate` | Validate all presentation YAML |
+| `pnpm run renumber` | Renumber slide comments |
+| `pnpm run pdf` | Export all presentations to PDF |
+
+### CLI
+
+```bash
+lazyslides init [dir]       # Scaffold a new project
+lazyslides validate         # Validate presentation YAML
+lazyslides renumber [file]  # Renumber slide comments
+lazyslides pdf [name]       # Export to PDF
+```
 
 ## Updating
 
@@ -128,19 +169,9 @@ pnpm update lazyslides
 
 Your content stays untouched — only the engine updates.
 
-## Creating Presentations with Claude Code
-
-Use the `/new-presentation` slash command to create a full presentation interactively. Claude will:
-
-1. Gather your topic, audience, and goals
-2. Create a structured outline
-3. Map each slide to the optimal template
-4. Generate complete YAML
-5. Validate and preview
-
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details on adding templates, creating themes, and submitting PRs.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on adding templates, creating themes, and submitting PRs. AI-assisted contributions are welcome — see [AGENTS.md](AGENTS.md) for agent-specific rules.
 
 ## License
 

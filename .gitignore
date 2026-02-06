@@ -5,3 +5,4 @@ _pdfs/
 *.log
 .claude/settings.local.json
 .idea/
+*.tgz
