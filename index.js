@@ -116,6 +116,20 @@ permalink: /presentations/
 `);
 
   // ---------------------------------------------------------------
+  // 6b. Virtual template — root redirect to presentations index
+  // ---------------------------------------------------------------
+  eleventyConfig.addTemplate("root-redirect.njk", `---
+permalink: /index.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="refresh" content="0; url={{ '/presentations/' | url }}"></head>
+<body></body>
+</html>
+`);
+
+  // ---------------------------------------------------------------
   // 7. Ignores
   // ---------------------------------------------------------------
   eleventyConfig.ignores.add("node_modules/**");
