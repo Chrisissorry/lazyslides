@@ -4,22 +4,50 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
 
-An [Eleventy](https://www.11ty.dev/) plugin for building [Reveal.js](https://revealjs.com) presentations from YAML. Styled with [Tailwind CSS](https://tailwindcss.com).
+Build things, not slides. For people who are to lazy to build Powerpoints and still have to... somehow. 
+
+Leverage your favorite AI agent to build simple, yet meaningful slide decks. 
+
+Built on [Eleventy](https://www.11ty.dev/), [Reveal.js](https://revealjs.com), and [Tailwind CSS](https://tailwindcss.com).
 
 [Live demo](https://chrisissorry.github.io/lazyslides/)
 
+## Why
+
+AI tools like ChatGPT, Gamma, and Manus generate entire slide decks — but the output is generic, you can't edit one slide without regenerating the whole thing, and exports to PowerPoint break layouts. The underlying problem hasn't changed: content and design are still tangled together.
+
+LazySlides separates them. You write slides as structured YAML — the format AI models read and write natively. The engine handles all rendering and styling. This means:
+
+- **Edit one slide without touching the rest** — each slide is an independent YAML block
+- **You control every word** — no AI-generated filler text, no walls of bullets
+- **Clean git diffs** — review slide changes line by line in pull requests
+- **Validation catches errors before your audience does** — schema checks run on every build
+- **Composable** — copy slides between decks, merge presentations, build libraries
+
+## Features
+
+- **17 slide templates** — title, content, metrics, comparison, timeline, funnel, code, and more
+- **Speaker view** — press S for notes, timer, and next-slide preview
+- **Section progress bar** — visual progress dots with section markers; click to jump between sections
+- **Source references** — attach citations to any slide, rendered as linked footnotes
+- **Image lightbox** — click any image to view fullscreen via GLightbox
+- **Syntax highlighting** — code slides with language-aware highlighting
+- **PDF export** — one command via DeckTape at 1920x1080
+- **Themeable** — swap colors, fonts, and branding with a single CSS file
+- **Extensible** — add custom slide templates to your project as needed
+- **Validation** — schema checks catch YAML errors before your audience does
+- **Keyboard navigation** — arrow keys, Escape for overview, F for fullscreen
+
 ## Workflow
 
-LazySlides separates content from design. You focus on what your presentation says — the engine handles how it looks.
+Research a topic, outline the structure, generate YAML, iterate. Any AI tool can handle steps 1-3 — Claude Code has built-in slash commands for it, but the outline format is plain markdown that works in Claude Desktop, ChatGPT, or any other tool.
 
-A typical workflow:
-
-1. **Research** — gather data, quotes, and examples (use an AI tool or do it manually)
-2. **Outline** — structure sections and slides in `outline.md` (plain markdown, works with any tool)
-3. **Draft** — convert the outline into YAML slides
+1. **Research** — gather data, quotes, and examples
+2. **Outline** — structure sections and slides in `outline.md`
+3. **Draft** — convert the outline into YAML slides (AI does this in seconds)
 4. **Iterate** — preview, refine content, re-validate
 
-AI tools like Claude Code, Claude Desktop, or ChatGPT speed up steps 1-3 significantly. Claude Code has built-in slash commands for the full workflow (see below), but the outline format is plain markdown that works anywhere.
+You focus on what your presentation content. The engine ties it to themed slides. 
 
 ## Setup
 
@@ -32,57 +60,46 @@ pnpm install
 pnpm run dev
 ```
 
-Open [localhost:8080/presentations/my-first-deck/](http://localhost:8080/presentations/my-first-deck/) — this is the starter deck created by `init`. Edit `presentations/my-first-deck/index.md` to make it yours.
+Open [localhost:8080/presentations/my-first-deck/](http://localhost:8080/presentations/my-first-deck/) — the starter deck created by `init`. Edit `presentations/my-first-deck/index.md` to make it yours.
 
 ## Outline format
 
-Each project includes a `presentations/_template/outline.md` with this structure:
+Each project includes `presentations/_template/outline.md`:
 
 ```markdown
-# Presentation Title
+# Introducing LazySlides
 
 ## Metadata
-- **Audience:** [description]
-- **Purpose:** [goal]
-- **Speaker:** [name and background]
-- **Duration:** [estimated time]
+- **Audience:** Developers, technical founders, presentation-heavy professionals
+- **Purpose:** Show how YAML + AI replaces manual slide design
+- **Speaker:** Chrisissorry, creator of LazySlides
+- **Duration:** 20 minutes
 
 ## Key Messages
-1. [message 1]
-2. [message 2]
-3. [message 3]
+1. Presentations are broken — manual layout and proprietary formats waste hours
+2. YAML + templates = separation of concerns
+3. AI writes structured YAML natively, enabling fast generation
 
 ## Outline
 
-### Section 1: [Section Name]
-Purpose: [why this section exists]
+### Section 1: The Problem
+Purpose: Establish that current tools (including AI ones) don't fix the core issue
 
-#### Slide 1.1: [Slide Title]
-- **Key point:** [main takeaway]
-- **Template:** [template name]
-- **Notes:** [what to say]
+#### Slide 1.1: Death by PowerPoint
+- **Key point:** AI tools moved the pain, didn't remove it
+- **Template:** content
+- **Notes:** Generic output, all-or-nothing generation, broken exports
+
+#### Slide 1.2: What if slides were just data?
+- **Key point:** Pure YAML in, professional slides out
+- **Template:** center
 ```
 
-This is plain markdown — you can fill it out manually, paste it into any AI chat, or use `/create-outline` in Claude Code. The outline drives the YAML generation step.
-
-## Slash commands (Claude Code)
-
-The scaffolded project includes Claude Code slash commands for the full workflow:
-
-| Command | What it does |
-|---------|-------------|
-| `/new-presentation` | Create a presentation from scratch |
-| `/add-slide` | Add a slide to an existing deck |
-| `/research-topic` | Research a topic for data-driven slides |
-| `/create-outline` | Plan structure before writing YAML |
-| `/refine-slides` | Improve an existing presentation |
-| `/validate` | Check YAML and fix issues |
-
-The project also ships a `CLAUDE.md` with the complete template schema, so Claude Code knows every field of every template.
+The scaffold includes a blank version at `presentations/_template/outline.md`. Feed it to any AI tool along with your source material (meeting notes, research, a brief) and it produces a structured outline ready for YAML generation.
 
 ## Writing slides
 
-Each presentation is a single `index.md` file with YAML frontmatter:
+Each presentation is a single `index.md` with YAML frontmatter. No HTML, no Markdown body — just structured data:
 
 ```yaml
 ---
@@ -107,11 +124,11 @@ slides:
 ---
 ```
 
-You can put any supporting files (outlines, notes, PDFs, images) alongside `index.md` in the same folder — only `index.md` is processed as a presentation.
+Supporting files (outlines, notes, PDFs, images) go alongside `index.md` in the same folder — only `index.md` is processed as a presentation.
 
 ## Templates
 
-17 built-in templates:
+17 built-in templates cover common slide patterns:
 
 | Template | Description |
 |----------|-------------|
@@ -134,6 +151,21 @@ You can put any supporting files (outlines, notes, PDFs, images) alongside `inde
 | `agenda` | Clickable table of contents |
 
 See `CLAUDE.md` for the full field reference for each template.
+
+## Slash commands (Claude Code)
+
+The scaffolded project includes Claude Code slash commands for the full workflow:
+
+| Command | What it does |
+|---------|-------------|
+| `/new-presentation` | Create a presentation from scratch |
+| `/add-slide` | Add a slide to an existing deck |
+| `/research-topic` | Research a topic for data-driven slides |
+| `/create-outline` | Plan structure before writing YAML |
+| `/refine-slides` | Improve an existing presentation |
+| `/validate` | Check YAML and fix issues |
+
+The project ships a `CLAUDE.md` with the complete template schema, so Claude Code knows every field of every template.
 
 ## Commands
 

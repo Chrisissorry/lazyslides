@@ -16,7 +16,7 @@ slides:
 - template: title
   title: lazyslides
   subtitle: "AI-Native Presentations from Structured Data"
-  author: "Chris Tietz"
+  author: "Chrisissorry"
   notes: |
     - Welcome — this presentation is built entirely in YAML
     - Every slide you see uses a different template from the engine
@@ -106,7 +106,7 @@ slides:
 # Slide 7: Personal Testimony
 - template: quote
   quote: "I built a 16-slide investor pitch in under an hour. The same deck would have taken a full day in PowerPoint — and it wouldn't have looked this consistent."
-  author: "Chris Tietz"
+  author: "Chrisissorry"
   author_title: "Creator, lazyslides"
   notes: |
     - Real experience from building the daemetric pitch deck
@@ -483,7 +483,7 @@ slides:
 - template: title
   title: lazyslides
   subtitle: "YAML in. Slides out."
-  author: "Chris Tietz — github.com/chris-tietz/lazyslides"
+  author: "Chrisissorry — github.com/chris-tietz/lazyslides"
   logo: false
   notes: |
     - Thank you for watching

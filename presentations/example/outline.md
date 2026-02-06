@@ -1,6 +1,6 @@
 ---
 title: "lazyslides"
-author: "Chris Tietz"
+author: "Chrisissorry"
 date: 2026-02-05
 status: complete
 ---
@@ -14,7 +14,7 @@ status: complete
 - **Format**: Product showcase / meta-presentation (the deck demonstrates itself)
 
 ## Key Messages
-1. **Presentations are broken** — manual layout, binary formats, and designer-dependency waste hours
+1. **Presentations are broken** — manual layout, proprietary formats, and designer-dependency waste hours
 2. **YAML + templates = separation of concerns** — content authors focus on content, the engine handles design
 3. **AI-native by design** — structured YAML is what LLMs read and write best, enabling agentic workflows
 4. **17 templates cover 95% of slides** — from title cards to funnels, no HTML required
@@ -25,7 +25,7 @@ status: complete
 ### Section 1: Opening
 - [x] **Slide 1: Title**
   - Type: `title`
-  - Content: lazyslides branding, subtitle "AI-Native Presentations from Structured Data", author Chris Tietz
+  - Content: lazyslides branding, subtitle "AI-Native Presentations from Structured Data", author Chrisissorry
 
 - [x] **Slide 2: Agenda**
   - Type: `agenda`
@@ -38,7 +38,7 @@ status: complete
 
 - [x] **Slide 4: Death by PowerPoint**
   - Type: `content`
-  - Points: Manual layout, no version control, binary formats, design inconsistency, content+styling entangled
+  - Points: Manual layout, no version control, proprietary formats, design inconsistency, content+styling entangled
 
 - [x] **Slide 5: Traditional vs. YAML-Driven**
   - Type: `comparison`
