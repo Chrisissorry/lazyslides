@@ -30,6 +30,7 @@ describe("init", () => {
       "src/styles.css",
       "presentations/presentations.11tydata.js",
       "presentations/_template/index.md",
+      "presentations/_template/outline.md",
       "presentations/my-first-deck/index.md",
       "themes/.gitkeep",
       "package.json",
@@ -38,6 +39,11 @@ describe("init", () => {
       "README.md",
       "CLAUDE.md",
       ".claude/commands/new-presentation.md",
+      ".claude/commands/add-slide.md",
+      ".claude/commands/create-outline.md",
+      ".claude/commands/refine-slides.md",
+      ".claude/commands/research-topic.md",
+      ".claude/commands/validate.md",
       ".claude/settings.json",
     ];
 
