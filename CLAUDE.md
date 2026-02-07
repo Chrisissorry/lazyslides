@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LazySlides is an npm package (`lazyslides`) that provides an Eleventy plugin + CLI for creating Reveal.js slide decks from pure YAML. Presentations are authored in YAML, rendered through Nunjucks templates, and styled with Tailwind CSS 4.x.
+LazySlides turns structured YAML into professional slide decks. Presentations are authored in YAML, rendered through Nunjucks templates into Reveal.js, and styled with Tailwind CSS 4.x. Distributed as an npm package (`lazyslides`) with an Eleventy plugin and CLI.
 
 ## Presentation Authoring Workflow
 
 ### Creating a new presentation
 
-1. Run `/new-presentation` — the slash command guides you through the full process
-2. Or manually: create `presentations/{name}/index.md` with YAML frontmatter
+1. Start with an outline — fill in `presentations/_template/outline.md` or use `/create-outline`
+2. Run `/new-presentation` — the slash command guides you through the full process
+3. Or manually: create `presentations/{name}/index.md` with YAML frontmatter
 
 ### Adding slides
 

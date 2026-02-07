@@ -4,7 +4,7 @@ Instructions for AI agents working with this codebase.
 
 ## Overview
 
-LazySlides is a YAML-driven presentation system. Agents must produce **YAML content**, never raw HTML or Markdown slides. The rendering pipeline is:
+LazySlides turns structured YAML into professional slide decks. Agents must produce **YAML content**, never raw HTML or Markdown slides. The rendering pipeline is:
 
 ```
 YAML frontmatter → Nunjucks templates → Reveal.js HTML
@@ -24,7 +24,7 @@ All slide content lives in `presentations/*/index.md` as YAML frontmatter betwee
    ```
 3. **Only use valid templates**: `title`, `section`, `content`, `center`, `hero`, `metrics`, `comparison`, `columns`, `quote`, `image-overlay`, `code`, `timeline`, `funnel`, `split`, `split-wide`, `table`, `agenda`
 4. **Image paths** are relative to the presentation folder (e.g., `images/photo.jpg`)
-5. **Do NOT add** `layout: presentation` — it is set automatically by `presentations/presentations.json`
+5. **Do NOT add** `layout: presentation` — it is set automatically by `presentations/presentations.11tydata.js`
 6. **Read the template docblock** in `_includes/slides/{template}.njk` before generating slide YAML to verify field names and required fields
 7. **Run validation** after generating or modifying YAML: `pnpm run validate`
 

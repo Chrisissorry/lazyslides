@@ -6,8 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 ### Creating a new presentation
 
-1. Run `/new-presentation` — the slash command guides you through the full process
-2. Or manually: create `presentations/{name}/index.md` with YAML frontmatter
+1. Start with an outline — fill in `presentations/_template/outline.md` or use `/create-outline`
+2. Run `/new-presentation` — the slash command guides you through the full process
+3. Or manually: create `presentations/{name}/index.md` with YAML frontmatter
 
 ### Adding slides
 
