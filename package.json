@@ -1,7 +1,7 @@
 {
   "name": "lazyslides",
   "version": "0.1.0",
-  "description": "AI-native presentations from YAML — Eleventy plugin with Reveal.js",
+  "description": "Slide decks with native agentic AI integration",
   "license": "MIT",
   "author": "Chris Tietz",
   "keywords": [
