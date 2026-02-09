@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
 
-Build things, not slides. For people who are to lazy to build Powerpoints and still have to... somehow. 
+Build things, not slides. For people who are too lazy to build Powerpoints and still have to... somehow. 
 
 Leverage your favorite AI agent to build simple, yet meaningful slide decks. 
 
@@ -40,7 +40,7 @@ LazySlides separates them. You write slides as structured YAML — the format AI
 
 ## Workflow
 
-Research a topic, outline the structure, generate YAML, iterate. Any AI tool can handle steps 1-3 — Claude Code has built-in slash commands for it, but the outline format is plain markdown that works in Claude Desktop, ChatGPT, or any other tool.
+Research a topic, outline the structure, generate YAML, iterate. Any AI tool can handle steps 1-3 — LazySlides ships with slash commands for Claude Code to handle it, but the outline format is plain markdown that works in Claude Desktop, ChatGPT, or any other tool.
 
 1. **Research** — gather data, quotes, and examples
 2. **Outline** — structure sections and slides in `outline.md`
