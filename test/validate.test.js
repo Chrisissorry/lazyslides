@@ -118,6 +118,35 @@ slides:
     expect(result.errors).toContainEqual(expect.stringContaining("missing 'rows:'"));
   });
 
+  it("passes when referenced image exists", async () => {
+    writePresentation(tmpDir, "hasimage", `---
+title: Test
+slides:
+- template: split
+  title: With Image
+  image: images/photo.jpg
+---
+`);
+    const imgDir = path.join(tmpDir, "presentations", "hasimage", "images");
+    fs.mkdirSync(imgDir, { recursive: true });
+    fs.writeFileSync(path.join(imgDir, "photo.jpg"), "fake-image-data");
+    const result = await run({ cwd: tmpDir });
+    expect(result.errors).toHaveLength(0);
+  });
+
+  it("errors on missing image file", async () => {
+    writePresentation(tmpDir, "noimage", `---
+title: Test
+slides:
+- template: split
+  title: Missing Image
+  image: images/missing.jpg
+---
+`);
+    const result = await run({ cwd: tmpDir });
+    expect(result.errors).toContainEqual(expect.stringContaining("missing image 'images/missing.jpg'"));
+  });
+
   it("warns on commented-out slide definition", async () => {
     writePresentation(tmpDir, "commented", `---
 title: Test

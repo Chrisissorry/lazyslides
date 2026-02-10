@@ -1,6 +1,9 @@
-{# TEMPLATE: image-overlay — Full background image with positioned text box overlay. #}
+{# TEMPLATE: image-overlay — Full background image with positioned text box overlay.
+   NOTE: Use inline style for background-image, NOT data-background-image.
+   Reveal.js data-background-* renders in the full viewport (including theater margins),
+   while inline style keeps the image within the 960×540 slide bounds. #}
 {% set img_src = slide.image | resolveImage %}
-<section class="slide-image-overlay" data-background-image="{{ img_src }}" data-background-size="cover">
+<section class="slide-image-overlay" style="background-image: url('{{ img_src }}'); background-size: cover; background-position: center;">
   <div class="slide-body">
     <div class="overlay-box {{ slide.position | default('bottom-left') }}">
       {% if slide.title %}<h3>{{ slide.title }}</h3>{% endif %}

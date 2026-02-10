@@ -22,18 +22,27 @@ slides:
     - Every slide you see uses a different template from the engine
     - The presentation IS the demo
 
-# Slide 2: Agenda
+# Slide 2: Presenter View Tip
+- template: center
+  title: "Tip: Press S for Presenter View"
+  text: "Speaker notes, timer, and next-slide preview — try it now!"
+  notes: |
+    - This slide itself has speaker notes — you're looking at them!
+    - The presenter view shows notes, a timer, and a preview of the next slide
+    - Press Escape for the slide overview
+
+# Slide 3: Agenda
 - template: agenda
   title: Agenda
   sections:
     - title: "The Problem"
-      slide: 3
+      slide: 4
     - title: "How It Works"
-      slide: 9
+      slide: 10
     - title: "The Agentic Workflow"
-      slide: 18
-    - title: "What's Next"
-      slide: 24
+      slide: 19
+    - title: "Get Started"
+      slide: 25
   notes: |
     - Four sections covering why, what, how, and where we're headed
     - Click any section to jump directly there
@@ -43,7 +52,7 @@ slides:
 # SECTION 2: THE PROBLEM
 # =============================================================================
 
-# Slide 3: Section Divider
+# Slide 4: Section Divider
 - template: section
   title: The Problem
   subtitle: "Creating presentations is painful and slow"
@@ -51,7 +60,7 @@ slides:
     - Let's start with the pain that everyone in this room knows
     - We've all been there — 2am tweaking slide layouts
 
-# Slide 4: Death by PowerPoint
+# Slide 5: Death by PowerPoint
 - template: content
   title: "Death by PowerPoint — and AI hasn't fixed it"
   lead: "People tried ChatGPT, Gamma, and Manus. The pain just moved."
@@ -67,7 +76,7 @@ slides:
     - Reddit is full of complaints: generic content, too much text, broken PPTX exports
     - The root cause is the same — content and design are still entangled
 
-# Slide 5: AI Presentation Tools vs. lazyslides
+# Slide 6: AI Presentation Tools vs. lazyslides
 - template: comparison
   title: "AI Presentation Tools vs. lazyslides"
   left_header: "ChatGPT / Gamma / Manus"
@@ -94,7 +103,7 @@ slides:
     - Right column is highlighted by default — you can flip it with highlight: left
     - Key insight: YAML is what AI models read and write natively
 
-# Slide 6: What if slides were just data?
+# Slide 7: What if slides were just data?
 - template: center
   title: "What if slides were just data?"
   text: "Pure YAML in, professional slides out."
@@ -103,7 +112,7 @@ slides:
     - The center template puts one thought front and center
     - No distractions, just the message
 
-# Slide 7: Personal Testimony
+# Slide 8: Personal Testimony
 - template: quote
   quote: "I built a 16-slide investor pitch in under an hour. The same deck would have taken a full day in PowerPoint — and it wouldn't have looked this consistent."
   author: "Chrisissorry"
@@ -113,7 +122,7 @@ slides:
     - The quote template adds gravitas to testimonials
     - Notice the decorative quote marks and attribution styling
 
-# Slide 8: Zero to Slides in Minutes
+# Slide 9: Zero to Slides in Minutes
 - template: hero
   title: "Zero to Slides in Minutes"
   color: "#1a1a2e"
@@ -131,7 +140,7 @@ slides:
 # SECTION 3: HOW IT WORKS
 # =============================================================================
 
-# Slide 9: Section Divider
+# Slide 10: Section Divider
 - template: section
   title: How It Works
   subtitle: "Architecture and template system"
@@ -139,7 +148,7 @@ slides:
     - Now let's look under the hood
     - Three layers that keep concerns cleanly separated
 
-# Slide 10: Engine at a Glance
+# Slide 11: Engine at a Glance
 - template: metrics
   title: Engine at a Glance
   metrics:
@@ -164,7 +173,7 @@ slides:
     - Each card can have its own color: mint, coral, icy, amber, or default mauve
     - The zero HTML stat is the key selling point — pure YAML authoring
 
-# Slide 11: What a Slide Looks Like
+# Slide 12: What a Slide Looks Like
 - template: code
   title: What a Slide Looks Like
   language: yaml
@@ -175,7 +184,7 @@ slides:
     - The code template provides syntax highlighting for any language
     - Meta: this slide shows the code that makes the metrics slide work
 
-# Slide 12: Three Layers
+# Slide 13: Three Layers
 - template: content
   title: "Architecture: Three Layers"
   lead: "Clean separation of content, templates, and styling"
@@ -194,7 +203,7 @@ slides:
     - Content authors never see HTML — templates never touch styling
     - Nested lists use the map syntax — this slide demonstrates it
 
-# Slide 13: Template Reference
+# Slide 14: Template Reference
 - template: table
   title: Template Reference
   columns:
@@ -216,7 +225,7 @@ slides:
     - Every template you've seen so far is listed here
     - This is the table template in action — auto-styled with alternating rows
 
-# Slide 14: Templates (continued)
+# Slide 15: Templates (continued)
 - template: columns
   title: "Templates (continued)"
   left_title: "Layout Templates"
@@ -237,7 +246,7 @@ slides:
     - Between the table on the previous slide and this one, all 17 templates are listed
     - Layout vs visualization is a useful mental model for template selection
 
-# Slide 15: Theming System
+# Slide 16: Theming System
 - template: split
   title: Theming System
   image: images/theming.jpg
@@ -256,7 +265,7 @@ slides:
     - Works without an image too — the content expands
     - Theming is just CSS custom properties — no template changes needed
 
-# Slide 16: Presenter Features
+# Slide 17: Presenter Features
 - template: split-wide
   title: Presenter Features
   image: images/dashboard-example.png
@@ -271,7 +280,7 @@ slides:
     - Press S right now to see these speaker notes in action
     - PDF export runs bin/export-pdf.sh — handles validation, build, and export
 
-# Slide 17: Why YAML + AI Works
+# Slide 18: Why YAML + AI Works
 - template: content
   title: Why YAML + AI Works
   items:
@@ -289,7 +298,7 @@ slides:
 # SECTION 4: THE AGENTIC WORKFLOW
 # =============================================================================
 
-# Slide 18: Section Divider
+# Slide 19: Section Divider
 - template: section
   title: The Agentic Workflow
   subtitle: "Claude Code as presentation co-pilot"
@@ -297,7 +306,7 @@ slides:
     - This section covers the AI-powered creation workflow
     - Claude Code has full context about the engine via CLAUDE.md
 
-# Slide 19: From Topic to Slides
+# Slide 20: From Topic to Slides
 - template: timeline
   title: From Topic to Slides
   events:
@@ -321,7 +330,7 @@ slides:
     - Each step can be done by the AI agent with human review
     - The whole flow typically takes under 10 minutes for a 20-slide deck
 
-# Slide 20: Claude Code Integration
+# Slide 21: Claude Code Integration
 - template: content
   title: Claude Code Integration
   lead: "CLAUDE.md gives the AI full context about the engine"
@@ -338,7 +347,7 @@ slides:
     - The new-presentation command follows a 7-step agentic workflow
     - Slash commands give natural-language access to engine operations
 
-# Slide 21: Idea to Delivered Deck
+# Slide 22: Idea to Delivered Deck
 - template: funnel
   title: Idea to Delivered Deck
   stages:
@@ -357,7 +366,7 @@ slides:
     - Each stage reduces ambiguity — from vague topic to pixel-perfect slides
     - Best with 3-7 stages for visual clarity
 
-# Slide 22: Build Pipeline
+# Slide 23: Build Pipeline
 - template: image-overlay
   image: images/pipeline.jpg
   position: bottom-left
@@ -372,7 +381,7 @@ slides:
     - Four positions available: top-left, top-right, bottom-left, bottom-right
     - The arrow image reinforces the directional flow of the pipeline
 
-# Slide 23: Open Core Model
+# Slide 24: Open Core Model
 - template: columns
   title: Open Core Model
   left_title: "Free & Open Source"
@@ -395,91 +404,43 @@ slides:
     - MIT license means no restrictions on commercial use
 
 # =============================================================================
-# SECTION 5: WHAT'S NEXT
+# SECTION 5: GET STARTED
 # =============================================================================
 
-# Slide 24: Section Divider
+# Slide 25: Section Divider
 - template: section
-  title: "What's Next"
-  subtitle: "Open source roadmap and vision"
+  title: "Get Started"
+  subtitle: "From zero to slides in under a minute"
   notes: |
-    - Final section — where we're headed
-    - The engine is functional today, but the roadmap is ambitious
+    - Final section — how to start using lazyslides today
+    - One command to scaffold, one to preview
 
-# Slide 25: License Landscape
-- template: table
-  title: License Landscape
-  columns:
-    - Dependency
-    - License
-    - Implication
-  rows:
-    - ["Eleventy 3.x", "MIT", "No restrictions"]
-    - ["Reveal.js 5.1.0", "MIT", "No restrictions"]
-    - ["Tailwind CSS 4.x", "MIT", "No restrictions"]
-    - ["GLightbox 3.3.1", "MIT", "No restrictions"]
-    - ["highlight.js", "BSD 3-Clause", "Attribution required"]
-    - ["Puppeteer / DeckTape", "Apache 2.0 / MIT", "No restrictions"]
-    - ["Google Fonts", "OFL", "Free for any use"]
-  reference: "All permissive — MIT recommended for the project"
+# Slide 26: Installation
+- template: code
+  title: Get Started in 30 Seconds
+  language: bash
+  code: "# Create a new presentation project\npnpm dlx lazyslides init my-deck\n\n# Start the dev server\ncd my-deck\npnpm dev"
+  caption: "One command to scaffold, one to preview — open localhost:8080 to see your slides"
   notes: |
-    - Every single dependency uses a permissive license
-    - No GPL, no copyleft — MIT is the clear choice
-    - The table template auto-styles with alternating row colors
+    - pnpm dlx downloads and runs the CLI without global install
+    - The init command scaffolds a full project with config, styles, and an example presentation
+    - pnpm dev starts Eleventy with hot reload — edit YAML, see changes instantly
 
-# Slide 26: Distribution Roadmap
+# Slide 27: Create a Deck with AI
 - template: content
-  title: Distribution Roadmap
-  ordered_items:
-    - "<strong>GitHub template repo</strong> — click 'Use this template' to get started (fastest path)"
-    - "<strong>Upstream update guide</strong> — documentation for pulling engine updates into forks"
-    - "<strong>npm package</strong> — install via package.json, cleanest separation of engine and content"
-    - "<strong>Full CLI tool</strong> — lazyslides new, lazyslides build, lazyslides export"
-  notes: |
-    - Start simple, evolve the distribution model
-    - GitHub template repo is the MVP — works today
-    - npm package is the long-term goal for clean engine/content separation
-
-# Slide 27: Feature Roadmap
-- template: content
-  title: Feature Roadmap
-  lead: "Web-based integrations and export formats"
+  title: Create a Deck with AI
+  lead: "Open Claude Code in your project and try:"
   items:
-    - "<strong>Unsplash integration</strong> — search and insert background images directly from YAML"
-    - "<strong>Slido / Mentimeter integration</strong> — live polls and Q&A embedded in slides without switching tools"
-    - "<strong>PPTX export</strong> — native PowerPoint file generation for teams that require it"
-    - "<strong>Google Slides export</strong> — direct export to Google Workspace for collaboration"
+    - "\"Create a 12-slide presentation about [your topic]. Use the /new-presentation command to research, outline, and generate the YAML.\""
+    - "<strong>Claude reads CLAUDE.md</strong> — it already knows the templates, YAML schema, and validation rules"
+    - "<strong>Slash commands guide the workflow</strong> — /new-presentation, /add-slide, /refine-slides"
+    - "<strong>Iterate naturally</strong> — edit YAML directly or ask Claude to modify specific slides"
   notes: |
-    - These features extend the engine beyond standalone presentations
-    - Unsplash solves the "I need a background image" problem
-    - PPTX and Google Slides export meet enterprise requirements
+    - Claude Code picks up context from CLAUDE.md automatically
+    - The slash commands are defined in the project and walk through multi-step workflows
+    - You can also just edit the YAML by hand — it's plain text
 
-# Slide 28: Why Open Source
-- template: metrics
-  title: Why Open Source
-  metrics:
-    - value: "100%"
-      label: "Permissive"
-      context: "Every dependency, MIT compatible"
-      color: mint
-    - value: "$0"
-      label: "Cost to Start"
-      context: "Free forever for individual use"
-      color: coral
-    - value: "5 min"
-      label: "Topic to Slides"
-      context: "With the agentic workflow"
-      color: icy
-    - value: "17"
-      label: "Templates"
-      context: "Reusable across every deck"
-      color: amber
-  notes: |
-    - These four numbers tell the story
-    - Open source means the community can contribute templates
-    - The 5-minute claim is real — this deck was generated by AI
-
-# Slide 29: Closing
+# Slide 28: Closing
 - template: title
   title: lazyslides
   subtitle: "YAML in. Slides out."

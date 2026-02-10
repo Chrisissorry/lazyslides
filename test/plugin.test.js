@@ -97,8 +97,8 @@ describe("resolveImage filter", () => {
     resolveImage = calls.filters.resolveImage;
   });
 
-  it("prepends ../ to relative paths", () => {
-    expect(resolveImage("images/photo.jpg")).toBe("../images/photo.jpg");
+  it("returns relative paths as-is", () => {
+    expect(resolveImage("images/photo.jpg")).toBe("images/photo.jpg");
   });
 
   it("leaves absolute paths unchanged", () => {
