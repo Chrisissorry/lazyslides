@@ -1,17 +1,29 @@
-{# TEMPLATE: agenda — Clickable table of contents for presentation sections. #}
+{# TEMPLATE: agenda — Clickable table of contents for presentation sections.
+   Set auto_generate: true to build the agenda automatically from section slides.
+   Manual mode: provide sections array with title and slide (0-based index). #}
 <section class="slide-agenda">
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title | default("Agenda") }}</h2>
     </div>
     <ol class="agenda-list">
-      {% for item in slide.sections %}
+      {% if slide.auto_generate %}
+        {% for s in slides %}
+          {% if s.template == "section" %}
+      <li><a href="#/{{ loop.index0 }}">{{ s.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for item in slide.sections %}
       <li><a href="#/{{ item.slide }}">{{ item.title }}</a></li>
-      {% endfor %}
+        {% endfor %}
+      {% endif %}
     </ol>
   </div>
+  {% if global_footer and not slide.hide_footer %}
   {% set reference = slide.reference %}
   {% set reference_link = slide.reference_link %}
   {% set references = slide.references %}
   {% include "slides/footer.njk" %}
+  {% endif %}
 </section>

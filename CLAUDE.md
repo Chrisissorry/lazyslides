@@ -46,11 +46,12 @@ theme: default
 transition: slide
 progress: true
 slideNumber: true
-show_footer: true
+show_footer: true            # show footer on slides (default: true, set false to hide globally)
 slides:                      # required — array of slide objects
   - template: content        # required on every slide
     title: Slide Title
     # ... template-specific fields
+    hide_footer: true        # optional — hide footer on this slide (default: false)
     notes: |                 # optional speaker notes (all templates)
       What to say during this slide
 ---
@@ -71,6 +72,7 @@ Fields marked with `*` are required.
 #### `section` — Chapter divider
 - `title`* — section name
 - `subtitle` — section description
+- `show_footer` — show footer on this slide (default: hidden)
 
 #### `content` — Standard bullets
 - `title`* — slide title
@@ -96,7 +98,7 @@ Fields marked with `*` are required.
 - `box_title` — overlay box heading
 - `box_text` — overlay box content
 - `box_items` — overlay box bullet list
-- `hide_footer` — hide footer on this slide
+- `show_footer` — show footer on this slide (default: hidden)
 
 #### `metrics` — Key statistics
 - `title`* — slide title
@@ -186,9 +188,10 @@ Fields marked with `*` are required.
 
 #### `agenda` — Clickable table of contents
 - `title` — slide title (default: "Agenda")
-- `sections`* — array of section objects:
+- `auto_generate` — build agenda automatically from `section` slides (default: false)
+- `sections` — manual array of section objects (ignored when `auto_generate` is true):
   - `title`* — section name
-  - `slide`* — slide number to link to
+  - `slide`* — 0-based slide index to link to
 - `reference` / `reference_link` / `references`
 
 ## Common Patterns
@@ -245,6 +248,7 @@ Images in `center`, `split`, and `split-wide` templates automatically get lightb
 - **Typography:** Source Serif 4 for headings, Plus Jakarta Sans for body
 - **Colors:** Primary is mauve (purple), semantic colors: `mint`, `coral`, `amber`, `icy`
 - **Spacing:** 40px slide padding, design tokens in `src/styles.css` `@theme` block
+- **Footer branding:** Override `--footer-brand-name` and `--footer-logo-url` in a theme CSS file
 
 ## Rules for Claude
 

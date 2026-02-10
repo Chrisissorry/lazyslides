@@ -171,6 +171,19 @@ html, body {
   overflow: hidden;
 }
 
+/* Overview mode (ESC key) — ensure all slides are visible as thumbnails.
+   Reveal.js sets the hidden attribute on non-present sections, and
+   Tailwind's @layer base includes [hidden] { display: none !important }.
+   With CSS layers, layered !important beats unlayered !important, so we
+   must place our override inside @layer base where specificity decides. */
+@layer base {
+  .reveal.overview .slides > section {
+    display: flex !important;
+    flex-direction: column;
+    opacity: 1 !important;
+  }
+}
+
 /* ============================================
    BASE TYPOGRAPHY
    ============================================ */
@@ -1555,7 +1568,8 @@ html, body {
 }
 
 /* Enlarge progress bar when hovering near bottom */
-.reveal:has(.section-progress-dots:hover) .progress {
+.reveal:has(.section-progress-dots:hover) .progress,
+.reveal:has(.progress:hover) .progress {
   height: 20px;  /* 5x the original 4px */
 }
 
@@ -2022,7 +2036,7 @@ html, body {
   right: 0;
   height: 40px;           /* Large hover zone for easier mouse targeting */
   z-index: 11;            /* Above progress bar (z-index: 10) */
-  pointer-events: auto;   /* Enable hover detection on container */
+  pointer-events: none;   /* Let clicks pass through to progress bar */
 }
 
 .section-progress-dots .section-dot {
@@ -2039,7 +2053,8 @@ html, body {
 }
 
 /* Enlarge dots when hovering near bottom */
-.section-progress-dots:hover .section-dot {
+.section-progress-dots:hover .section-dot,
+.reveal:has(.progress:hover) .section-progress-dots .section-dot {
   width: 20px;
   height: 20px;
 }

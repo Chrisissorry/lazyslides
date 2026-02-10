@@ -10,7 +10,7 @@ Leverage your favorite AI agent to build simple, yet meaningful slide decks.
 
 Built on [Eleventy](https://www.11ty.dev/), [Reveal.js](https://revealjs.com), and [Tailwind CSS](https://tailwindcss.com).
 
-[Live demo](https://chrisissorry.github.io/lazyslides/)
+[Live demo](https://chrisissorry.github.io/lazyslides/presentations/example/)
 
 ## Why
 
@@ -148,9 +148,30 @@ Supporting files (outlines, notes, PDFs, images) go alongside `index.md` in the 
 | `table` | Data table |
 | `code` | Code snippet with syntax highlighting |
 | `image-overlay` | Full image with positioned text box |
-| `agenda` | Clickable table of contents |
+| `agenda` | Clickable table of contents (supports `auto_generate: true`) |
 
 See `CLAUDE.md` for the full field reference for each template.
+
+## Footer
+
+Every slide (except `title`) includes a footer bar with slide numbers, a logo, a brand name, and optional source references.
+
+**Visibility** — the footer is shown by default on most templates. Hero and section slides hide it by default.
+
+| Level | Field | Effect |
+|-------|-------|--------|
+| Presentation | `show_footer: false` | Hides the footer on all slides |
+| Per slide | `hide_footer: true` | Hides footer on that slide |
+| Per slide (hero/section) | `show_footer: true` | Shows footer on that slide |
+
+**Branding** — customize the logo and name via CSS custom properties in a theme file:
+
+```css
+:root {
+  --footer-brand-name: 'Your Brand';
+  --footer-logo-url: url('/path/to/logo.svg');
+}
+```
 
 ## Slash commands (Claude Code)
 
@@ -186,7 +207,6 @@ Drop a CSS file into `themes/` to override design tokens:
 ```css
 :root {
   --color-primary-500: #your-brand-color;
-  --footer-brand-name: 'Your Brand';
 }
 ```
 
