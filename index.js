@@ -134,7 +134,7 @@ eleventyExcludeFromCollections: true
 ---
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="refresh" content="0; url={{ '/presentations/example/' | url }}"></head>
+<head><meta http-equiv="refresh" content="0; url={{ '/presentations/' | url }}"></head>
 <body></body>
 </html>
 `);
