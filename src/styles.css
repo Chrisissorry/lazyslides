@@ -291,8 +291,9 @@ html, body {
   padding: 12px;
   max-height: 250px;
   border-radius: 4px;
-  background: var(--color-slate-100);
-  border: 1px solid var(--color-slate-200);
+  background: #272822;
+  color: #f8f8f2;
+  border: none;
 }
 
 .reveal p code,

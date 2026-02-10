@@ -16,8 +16,7 @@ export default function lazyslides(eleventyConfig, options = {}) {
   // 1. Filters & Nunjucks test (unchanged logic from .eleventy.js)
   // ---------------------------------------------------------------
   eleventyConfig.addFilter("resolveImage", (src) => {
-    if (!src || src.includes("://") || src.startsWith("/")) return src;
-    return "../" + src;
+    return src;
   });
 
   eleventyConfig.addFilter("isMapping", (val) => {
@@ -31,6 +30,10 @@ export default function lazyslides(eleventyConfig, options = {}) {
   //    users can override any template.
   // ---------------------------------------------------------------
   eleventyConfig.amendLibrary("njk", (env) => {
+    // Disable autoescape so YAML values containing HTML (e.g. <strong>)
+    // render correctly instead of being entity-escaped.
+    env.opts.autoescape = false;
+
     // Register the "mapping" test
     env.addTest("mapping", (val) => {
       return val !== null && typeof val === "object" && !Array.isArray(val);
