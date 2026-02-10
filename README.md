@@ -164,6 +164,8 @@ The scaffolded project includes Claude Code slash commands for the full workflow
 | `/create-outline` | Plan structure before writing YAML |
 | `/refine-slides` | Improve an existing presentation |
 | `/validate` | Check YAML and fix issues |
+| `/add-template` | Create a custom slide template |
+| `/add-theme` | Create a custom CSS theme |
 
 The project ships a `CLAUDE.md` with the complete template schema, so Claude Code knows every field of every template.
 
