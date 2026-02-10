@@ -171,6 +171,19 @@ html, body {
   overflow: hidden;
 }
 
+/* Overview mode (ESC key) — ensure all slides are visible as thumbnails.
+   Reveal.js sets the hidden attribute on non-present sections, and
+   Tailwind's @layer base includes [hidden] { display: none !important }.
+   With CSS layers, layered !important beats unlayered !important, so we
+   must place our override inside @layer base where specificity decides. */
+@layer base {
+  .reveal.overview .slides > section {
+    display: flex !important;
+    flex-direction: column;
+    opacity: 1 !important;
+  }
+}
+
 /* ============================================
    BASE TYPOGRAPHY
    ============================================ */
