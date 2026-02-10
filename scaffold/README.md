@@ -27,3 +27,4 @@ Add a new folder under `presentations/` with an `index.md` file containing your 
 
 - **Themes** — Drop CSS files into `themes/` to override the default theme
 - **Styles** — Add custom CSS to `src/styles.css`
+- **Templates** — Run `/add-template` in Claude Code to create custom slide templates

@@ -274,6 +274,8 @@ Images in `center`, `split`, and `split-wide` templates automatically get lightb
 | `/research-topic` | Research a topic for data-driven slides |
 | `/create-outline` | Create a structured outline before generating YAML |
 | `/refine-slides` | Review and improve an existing presentation |
+| `/add-template` | Create a custom slide template |
+| `/add-theme` | Create a custom CSS theme |
 
 ## Package Architecture
 
