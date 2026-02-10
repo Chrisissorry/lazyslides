@@ -34,19 +34,11 @@ slides:
 # Slide 3: Agenda
 - template: agenda
   title: Agenda
-  sections:
-    - title: "The Problem"
-      slide: 4
-    - title: "How It Works"
-      slide: 10
-    - title: "The Agentic Workflow"
-      slide: 19
-    - title: "Get Started"
-      slide: 25
+  auto_generate: true
   notes: |
     - Four sections covering why, what, how, and where we're headed
     - Click any section to jump directly there
-    - This slide itself uses the agenda template — clickable table of contents
+    - This slide uses auto_generate to build the agenda from section slides
 
 # =============================================================================
 # SECTION 2: THE PROBLEM

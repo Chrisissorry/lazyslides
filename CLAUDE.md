@@ -188,9 +188,10 @@ Fields marked with `*` are required.
 
 #### `agenda` — Clickable table of contents
 - `title` — slide title (default: "Agenda")
-- `sections`* — array of section objects:
+- `auto_generate` — build agenda automatically from `section` slides (default: false)
+- `sections` — manual array of section objects (ignored when `auto_generate` is true):
   - `title`* — section name
-  - `slide`* — slide number to link to
+  - `slide`* — 0-based slide index to link to
 - `reference` / `reference_link` / `references`
 
 ## Common Patterns
