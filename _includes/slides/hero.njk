@@ -18,7 +18,7 @@
     {% endif %}
     {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
   </div>
-  {% if not slide.hide_footer %}
+  {% if global_footer and slide.show_footer %}
   {% set reference = slide.reference %}
   {% set reference_link = slide.reference_link %}
   {% set references = slide.references %}
