@@ -305,6 +305,21 @@ Validation runs automatically before dev and build commands.
 
 **Requirements:** Node.js 22 (see `.nvmrc`), install deps with `pnpm install`
 
+## Git Workflow
+
+- **`develop`** is the default branch; **`main`** is production
+- Both branches have **branch protection** — never commit directly to them
+- Always create a feature branch, push it, and open a PR:
+  ```bash
+  git checkout -b fix/short-description develop
+  # ... make changes, commit ...
+  git push -u origin fix/short-description
+  gh pr create --base develop
+  ```
+- Branch naming: `fix/...`, `feat/...`, `ci/...`, `docs/...`
+- CI runs on all PRs to `develop` and `main` — wait for it to pass
+- Releases: PR from `develop` → `main`, then create a GitHub Release to trigger npm publish
+
 ## Key Plugin Techniques
 
 - **Nunjucks search paths**: `env.loaders[0].searchPaths.push()` adds package paths after user-local paths
