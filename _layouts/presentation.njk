@@ -43,6 +43,7 @@
         {% set slide_index = loop.index %}
         {% set total_slides = slides | length %}
         {% set presentation_title = title %}
+        {% set global_footer = show_footer if show_footer is defined else true %}
         {% include "slides/" + slide.template + ".njk" %}
       {% endfor %}
     </div>

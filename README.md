@@ -124,6 +124,8 @@ slides:
 ---
 ```
 
+Set `show_footer: false` in frontmatter to hide the footer globally. Per slide, use `hide_footer: true` to hide it or `show_footer: true` on hero/section slides (which hide the footer by default).
+
 Supporting files (outlines, notes, PDFs, images) go alongside `index.md` in the same folder — only `index.md` is processed as a presentation.
 
 ## Templates
@@ -185,6 +187,7 @@ Drop a CSS file into `themes/` to override design tokens:
 :root {
   --color-primary-500: #your-brand-color;
   --footer-brand-name: 'Your Brand';
+  --footer-logo-url: url('/path/to/logo.svg');
 }
 ```
 
