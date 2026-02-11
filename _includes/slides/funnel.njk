@@ -1,5 +1,6 @@
 {# TEMPLATE: funnel — Progressive narrowing funnel with stage labels and annotations. #}
-<section class="slide-funnel">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-funnel"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>
@@ -7,7 +8,7 @@
     <div class="funnel-wrapper">
       <div class="funnel-grid">
         {% for stage in slide.stages %}
-        <div class="funnel-row">
+        <div class="funnel-row{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
           <div class="funnel-stage-wrapper">
             <div class="funnel-stage stage-{{ loop.index }}">
               <span class="stage-label">{{ stage.label }}</span>

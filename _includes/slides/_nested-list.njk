@@ -1,22 +1,38 @@
-{# Reusable macro for rendering nested lists (map syntax + legacy object syntax) #}
-{% macro renderItems(items, ordered) %}
+{# Reusable macro for rendering nested lists (map syntax + legacy object syntax).
+   Supports fragment animations and auto-animate data-id attributes.
+
+   Parameters:
+     items     — the list items array
+     ordered   — true for <ol>, false for <ul> (default: false)
+     fragment_type — slide-level fragment class applied to all items (e.g. "fade-up")
+#}
+{% macro renderItems(items, ordered, fragment_type) %}
 <{{ "ol" if ordered else "ul" }}>
   {% for item in items %}
-  <li>
-    {% if item is mapping %}
-      {% for key, children in item %}
-        {{ key }}
-        <ul>
-          {% for sub in children %}<li>{{ sub }}</li>{% endfor %}
-        </ul>
-      {% endfor %}
-    {% elif item.text %}
+  <li
+    {%- if item is mapping and item.text is defined %}
+      {%- set frag = item.fragment or fragment_type %}
+      {%- if frag %} class="fragment {{ frag }}"{% endif %}
+      {%- if item.data_id %} data-id="{{ item.data_id }}"{% endif %}
+    {%- elif item is mapping %}
+      {%- if fragment_type %} class="fragment {{ fragment_type }}"{% endif %}
+    {%- else %}
+      {%- if fragment_type %} class="fragment {{ fragment_type }}"{% endif %}
+    {%- endif %}>
+    {% if item is mapping and item.text is defined %}
       {{ item.text }}
       {% if item.sub_items %}
       <ul>
-        {% for sub in item.sub_items %}<li>{{ sub }}</li>{% endfor %}
+        {% for sub in item.sub_items %}<li{% if frag %} class="fragment {{ frag }}"{% endif %}>{{ sub }}</li>{% endfor %}
       </ul>
       {% endif %}
+    {% elif item is mapping %}
+      {% for key, children in item %}
+        {{ key }}
+        <ul>
+          {% for sub in children %}<li{% if fragment_type %} class="fragment {{ fragment_type }}"{% endif %}>{{ sub }}</li>{% endfor %}
+        </ul>
+      {% endfor %}
     {% else %}
       {{ item }}
     {% endif %}

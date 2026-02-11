@@ -78,6 +78,7 @@ describe("footer visibility", () => {
       "slide-agenda",
       "slide-center",
       "slide-image-overlay",
+      "slide-three-columns",
     ];
 
     for (const type of regularTypes) {

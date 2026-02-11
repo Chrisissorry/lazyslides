@@ -147,6 +147,36 @@ slides:
     expect(result.errors).toContainEqual(expect.stringContaining("missing image 'images/missing.jpg'"));
   });
 
+  it("accepts three-columns as a valid template", async () => {
+    writePresentation(tmpDir, "threecol", `---
+title: Test
+slides:
+- template: three-columns
+  title: Three Cols
+---
+`);
+    const result = await run({ cwd: tmpDir });
+    expect(result.errors).toHaveLength(0);
+    expect(result.warnings.filter(w => w.includes("unknown template"))).toHaveLength(0);
+  });
+
+  it("warns when image is in a non-passthrough directory", async () => {
+    writePresentation(tmpDir, "baddir", `---
+title: Test
+slides:
+- template: split
+  title: Bad Dir
+  image: photos/pic.jpg
+---
+`);
+    const imgDir = path.join(tmpDir, "presentations", "baddir", "photos");
+    fs.mkdirSync(imgDir, { recursive: true });
+    fs.writeFileSync(path.join(imgDir, "pic.jpg"), "fake");
+    const result = await run({ cwd: tmpDir });
+    expect(result.errors).toHaveLength(0);
+    expect(result.warnings).toContainEqual(expect.stringContaining("only assets, images, videos"));
+  });
+
   it("warns on commented-out slide definition", async () => {
     writePresentation(tmpDir, "commented", `---
 title: Test

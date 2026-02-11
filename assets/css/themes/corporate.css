@@ -1,0 +1,25 @@
+/* ============================================
+   CORPORATE THEME
+   Charcoal and slate, minimal and professional.
+
+   Usage: Add `theme: corporate` to presentation frontmatter
+   ============================================ */
+
+:root {
+  /* Primary Color Scale — slate/charcoal */
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-200: #e2e8f0;
+  --color-primary-400: #94a3b8;
+  --color-primary-500: #64748b;
+  --color-primary-600: #475569;
+  --color-primary-700: #334155;
+
+  --font-heading: var(--font-sans);
+
+  --footer-brand-name: 'lazyslides';
+}
+
+html, body {
+  background: #ffffff;
+}

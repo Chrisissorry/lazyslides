@@ -1,0 +1,48 @@
+{# TEMPLATE: three-columns — Three equal-width columns for side-by-side content. #}
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-three-columns"{{ sectionAttrs(slide) }}>
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <div class="three-columns">
+      <div class="column{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
+        {% if slide.col1_title %}<h3>{{ slide.col1_title }}</h3>{% endif %}
+        {% if slide.col1_text %}<p>{{ slide.col1_text }}</p>{% endif %}
+        {% if slide.col1_items %}
+        <ul>
+          {% for item in slide.col1_items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="column{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
+        {% if slide.col2_title %}<h3>{{ slide.col2_title }}</h3>{% endif %}
+        {% if slide.col2_text %}<p>{{ slide.col2_text }}</p>{% endif %}
+        {% if slide.col2_items %}
+        <ul>
+          {% for item in slide.col2_items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="column{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
+        {% if slide.col3_title %}<h3>{{ slide.col3_title }}</h3>{% endif %}
+        {% if slide.col3_text %}<p>{{ slide.col3_text }}</p>{% endif %}
+        {% if slide.col3_items %}
+        <ul>
+          {% for item in slide.col3_items %}<li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% if global_footer and not slide.hide_footer %}
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+  {% endif %}
+</section>

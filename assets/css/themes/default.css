@@ -52,11 +52,9 @@
 }
 
 /* ----------------------------------------
-   THEATER BACKGROUND
-   The gradient behind the slide cards.
+   BACKGROUND
    ---------------------------------------- */
 
 html, body {
-  /* Default: warm gray to light primary tint */
-  background: linear-gradient(135deg, #f1f5f9 0%, var(--color-primary-50) 100%);
+  background: var(--color-background, #ffffff);
 }

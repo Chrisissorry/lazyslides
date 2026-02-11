@@ -1,0 +1,63 @@
+/* ============================================
+   CARD THEME
+   Restores the card/theater aesthetic where slides
+   appear as floating white cards on a gradient background.
+
+   Usage: Add `theme: card` to presentation frontmatter
+   ============================================ */
+
+:root {
+  /* Primary Color Scale — same sky blue as default */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+
+  --reveal-margin: 0.04;  /* Theater-style inset for card frame */
+  --footer-brand-name: 'lazyslides';
+}
+
+/* Theater gradient background */
+html, body {
+  background: linear-gradient(135deg, #f1f5f9 0%, var(--color-primary-50) 100%);
+}
+
+/* Transparent viewport so theater background shows through */
+.reveal-viewport {
+  background: transparent !important;
+}
+
+/* White card styling on each slide */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid var(--color-slate-200, #e2e8f0);
+  box-shadow:
+    0 2px 3px -1px rgba(0, 0, 0, 0.07),
+    0 5px 10px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* Restore footer rounded corners */
+.slide-footer {
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid var(--color-slate-200);
+  background: var(--color-slate-50);
+}
+
+/* Hero and image-overlay get rounded corners too */
+.reveal .slides section.slide-hero,
+.reveal .slides section.slide-image-overlay {
+  border-radius: 6px;
+}
+
+/* PDF export removes card styling */
+.pdf-export .reveal .slides > section,
+.pdf-export .reveal .slides > section > section {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}

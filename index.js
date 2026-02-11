@@ -67,8 +67,10 @@ export default function lazyslides(eleventyConfig, options = {}) {
     "themes/": "assets/css/themes/",
   });
 
-  // Per-presentation images
+  // Per-presentation assets, images, and videos
+  eleventyConfig.addPassthroughCopy("presentations/*/assets");
   eleventyConfig.addPassthroughCopy("presentations/*/images");
+  eleventyConfig.addPassthroughCopy("presentations/*/videos");
 
   // ---------------------------------------------------------------
   // 3b. Collection — only index.md files are presentations
@@ -108,18 +110,32 @@ title: Presentations
 permalink: /presentations/
 ---
 
-<div style="text-align: center; margin-bottom: 2rem;">
-  <h1 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 2rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem;">LazySlides</h1>
-  <p style="color: #64748b; font-size: 1rem;">AI-native presentations from YAML. Powered by Eleventy + Reveal.js + Tailwind CSS.</p>
+<div class="text-center mb-8 pb-6 border-b border-slate-200">
+  <h1 class="font-serif text-3xl font-bold text-slate-900 mb-2">LazySlides</h1>
+  <p class="text-slate-500">AI-native presentations from YAML. Powered by Eleventy + Reveal.js + Tailwind CSS.</p>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
   {% for presentation in collections.presentations %}
-  <a href="{{ presentation.url | url }}" style="display: block; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; background: white;">
-    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 1.1rem; font-weight: 600; color: #0f172a; margin: 0 0 0.5rem 0;">{{ presentation.data.title }}</h2>
-    {% if presentation.data.description %}
-    <p style="font-size: 0.85rem; color: #64748b; margin: 0;">{{ presentation.data.description }}</p>
-    {% endif %}
+  {% set theme = presentation.data.theme | default("default") %}
+  {% if theme == "midnight" %}{% set themeColor = "#6366f1" %}{% set themeBg = "#eef2ff" %}{% set themeText = "#4338ca" %}
+  {% elif theme == "sunset" %}{% set themeColor = "#f97316" %}{% set themeBg = "#fff7ed" %}{% set themeText = "#c2410c" %}
+  {% elif theme == "forest" %}{% set themeColor = "#22c55e" %}{% set themeBg = "#f0fdf4" %}{% set themeText = "#15803d" %}
+  {% elif theme == "corporate" %}{% set themeColor = "#64748b" %}{% set themeBg = "#f8fafc" %}{% set themeText = "#334155" %}
+  {% elif theme == "card" %}{% set themeColor = "#0ea5e9" %}{% set themeBg = "#f0f9ff" %}{% set themeText = "#0369a1" %}
+  {% else %}{% set themeColor = "#0ea5e9" %}{% set themeBg = "#f0f9ff" %}{% set themeText = "#0369a1" %}
+  {% endif %}
+  <a href="{{ presentation.url | url }}" class="block rounded-lg border border-slate-200 bg-white no-underline transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden" style="border-top: 3px solid {{ themeColor }};">
+    <div class="p-5">
+      <h2 class="font-serif text-lg font-semibold text-slate-900 mb-1 mt-0">{{ presentation.data.title }}</h2>
+      {% if presentation.data.description %}
+      <p class="text-sm text-slate-500 mb-4 mt-0">{{ presentation.data.description }}</p>
+      {% endif %}
+      <div class="flex items-center gap-3 mt-auto">
+        <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium" style="background: {{ themeBg }}; color: {{ themeText }};">{{ theme }}</span>
+        <span class="text-xs text-slate-400">{{ presentation.data.slides | length }} slides</span>
+      </div>
+    </div>
   </a>
   {% endfor %}
 </div>

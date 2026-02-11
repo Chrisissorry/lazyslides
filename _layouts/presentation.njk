@@ -17,9 +17,16 @@
   <!-- Tailwind CSS (structural styles) -->
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
 
-  <!-- Theme CSS (design tokens) -->
+  <!-- Theme -->
   {% set theme_name = theme | default('default') %}
   <link rel="stylesheet" href="{{ '/assets/css/themes/' | url }}{{ theme_name }}.css">
+
+  {% if footer_brand or footer_logo == false %}
+  <style>
+    {% if footer_brand %}:root { --footer-brand-name: '{{ footer_brand }}'; }{% endif %}
+    {% if footer_logo == false %}.footer-center .logo-small { display: none; }{% endif %}
+  </style>
+  {% endif %}
 
   <!-- Code highlighting theme -->
   <link rel="stylesheet" href="{{ '/assets/reveal.js/plugin/highlight/monokai.css' | url }}">
@@ -28,15 +35,6 @@
   <link rel="stylesheet" href="{{ '/assets/css/vendor/glightbox.min.css' | url }}">
 </head>
 <body>
-  <!-- Exit button to return to presentations index -->
-  <a href="{{ '/presentations/' | url }}"
-     class="exit-button"
-     title="Exit to presentations list">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 6L6 18M6 6l12 12"/>
-    </svg>
-  </a>
-
   <div class="reveal">
     <div class="slides">
       {% for slide in slides %}
@@ -52,6 +50,9 @@
     <div class="section-progress-dots"></div>
   </div>
 
+  <!-- Viewport footer — fixed at screen bottom, outside Reveal.js canvas -->
+  <div id="viewport-footer"></div>
+
   <!-- Reveal.js -->
   <script src="{{ '/assets/reveal.js/dist/reveal.js' | url }}"></script>
 
@@ -59,6 +60,11 @@
   <script src="{{ '/assets/reveal.js/plugin/markdown/markdown.js' | url }}"></script>
   <script src="{{ '/assets/reveal.js/plugin/highlight/highlight.js' | url }}"></script>
   <script src="{{ '/assets/reveal.js/plugin/notes/notes.js' | url }}"></script>
+  <script src="{{ '/assets/reveal.js/plugin/zoom/zoom.js' | url }}"></script>
+  <script src="{{ '/assets/reveal.js/plugin/search/search.js' | url }}"></script>
+  {% if math %}
+  <script src="{{ '/assets/reveal.js/plugin/math/math.js' | url }}"></script>
+  {% endif %}
 
   <!-- Convert newlines to <br/> in speaker notes for proper line breaks -->
   <script>
@@ -81,7 +87,7 @@
       height: {{ height | default(540) }},
 
       // Scale settings
-      margin: isPdfExport ? 0 : 0.04,
+      margin: parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--reveal-margin')) || 0,
       minScale: 0.2,
       maxScale: 2.0,
 
@@ -94,7 +100,7 @@
       progress: isPdfExport ? false : {{ progress | default(true) }},
 
       // Slide number
-      slideNumber: {{ slideNumber | default(false) }},
+      slideNumber: false,
 
       // Push each slide to browser history
       history: {{ history | default(true) }},
@@ -157,7 +163,7 @@
       mobileViewDistance: {{ mobileViewDistance | default(2) }},
 
       // Plugins
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch{% if math %}, RevealMath.KaTeX{% endif %} ]
     });
   </script>
 
@@ -236,6 +242,25 @@
       Reveal.on('slidechanged', updateDots);
       updateDots(); // Set initial state
     });
+  </script>
+
+  <!-- Viewport footer: clone current slide's footer to fixed container -->
+  <script>
+    function updateViewportFooter() {
+      const container = document.getElementById('viewport-footer');
+      if (!container || document.body.classList.contains('pdf-export')) return;
+
+      const currentSlide = Reveal.getCurrentSlide();
+      const footer = currentSlide?.querySelector('.slide-footer');
+
+      container.innerHTML = '';
+      if (footer) {
+        container.appendChild(footer.cloneNode(true));
+      }
+    }
+
+    Reveal.on('ready', updateViewportFooter);
+    Reveal.on('slidechanged', updateViewportFooter);
   </script>
 </body>
 </html>
