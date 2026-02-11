@@ -1,5 +1,6 @@
 {# TEMPLATE: comparison — Before/after two-column table with optional highlight styling. #}
-<section class="slide-comparison{% if slide.highlight == 'left' %} highlight-left{% elif slide.highlight == 'none' %} highlight-none{% endif %}">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-comparison{% if slide.highlight == 'left' %} highlight-left{% elif slide.highlight == 'none' %} highlight-none{% endif %}"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>
@@ -13,7 +14,7 @@
       </thead>
       <tbody>
         {% for row in slide.rows %}
-        <tr>
+        <tr{% if slide.fragment %} class="fragment {{ slide.fragment }}"{% endif %}>
           <td>{% if row.left_icon == "bad" %}<span class="icon-bad">✗</span>{% endif %}{{ row.left }}</td>
           <td>{% if row.right_icon == "good" %}<span class="icon-good">✓</span>{% endif %}{{ row.right }}</td>
         </tr>

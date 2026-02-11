@@ -1,5 +1,6 @@
 {# TEMPLATE: center — Centered statement, image, or both. Image has lightbox on click. #}
-<section class="slide-center">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-center"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     {% if slide.title %}<h2>{{ slide.title }}</h2>{% endif %}
     {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}

@@ -1,6 +1,7 @@
 {# TEMPLATE: content — Standard slide with headline and bullet points. #}
 {% from "slides/_nested-list.njk" import renderItems %}
-<section class="slide-content">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-content"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>
@@ -8,10 +9,10 @@
     </div>
     {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}
     {% if slide.items %}
-    {{ renderItems(slide.items) }}
+    {{ renderItems(slide.items, false, slide.fragment) }}
     {% endif %}
     {% if slide.ordered_items %}
-    {{ renderItems(slide.ordered_items, true) }}
+    {{ renderItems(slide.ordered_items, true, slide.fragment) }}
     {% endif %}
     {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
   </div>

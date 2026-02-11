@@ -16,10 +16,18 @@ You are helping the user improve an existing presentation.
 
 Analyze and report:
 - **Slide count** — is it appropriate for the estimated duration?
-- **Template diversity** — are templates varied or repetitive? (e.g., 10 `content` slides in a row)
+- **Template diversity** — are templates varied or repetitive? (e.g., 3+ `content` slides in a row)
 - **Visual rhythm** — is there a good mix of text-heavy and visual slides?
 - **Section structure** — are `section` dividers used to organize the flow?
 - **Notes coverage** — which slides are missing speaker notes?
+- **Design quality** — check against the presentation-design skill anti-patterns:
+  - Wall of text (>100 words on a slide)
+  - Template monotony (3+ consecutive same template)
+  - Missing section dividers in decks >8 slides
+  - Generic titles ("Overview", "Details")
+  - Fragment overuse (>50% of slides)
+  - Missing alt text on images
+- **Animation strategy** — suggest where `fragment`, `auto_animate`, or per-slide `transition` would improve the narrative
 
 ## Step 3: Content Review
 

@@ -1,5 +1,6 @@
 {# TEMPLATE: quote — Testimonial or statement with attribution. #}
-<section class="slide-quote">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-quote"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="quote-mark">"</div>
     <blockquote>{{ slide.quote }}</blockquote>

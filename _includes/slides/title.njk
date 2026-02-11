@@ -1,5 +1,6 @@
 {# TEMPLATE: title — Opening slide with logo, title, subtitle, and author. #}
-<section class="slide-title">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-title"{{ sectionAttrs(slide) }}>
   {% if slide.logo != false %}
   <div class="logo">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

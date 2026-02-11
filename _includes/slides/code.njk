@@ -1,5 +1,6 @@
 {# TEMPLATE: code — Code snippet display with syntax highlighting. #}
-<section class="slide-code">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-code"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>

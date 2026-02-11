@@ -1,6 +1,6 @@
 ---
-title: lazyslides
-description: AI-Native Presentations from Structured Data
+title: LazySlides
+description: A Template Showcase
 theme: default
 transition: slide
 progress: true
@@ -9,437 +9,403 @@ slideNumber: true
 slides:
 
 # =============================================================================
-# SECTION 1: OPENING
+# OPENING
 # =============================================================================
 
 # Slide 1: Title
 - template: title
-  title: lazyslides
-  subtitle: "AI-Native Presentations from Structured Data"
-  author: "Chrisissorry"
+  title: LazySlides
+  subtitle: "A Template Showcase"
+  author: "Built with LazySlides"
   notes: |
-    - Welcome — this presentation is built entirely in YAML
-    - Every slide you see uses a different template from the engine
-    - The presentation IS the demo
+    Welcome to the LazySlides capabilities showcase.
+    Every slide in this deck uses a different template — and each slide's content
+    explains the template it's built with.
+    The presentation IS the documentation.
 
-# Slide 2: Presenter View Tip
+# Slide 2: Press S for Speaker Notes
 - template: center
-  title: "Tip: Press S for Presenter View"
-  text: "Speaker notes, timer, and next-slide preview — try it now!"
+  title: "Press S for Speaker Notes"
+  text: "Every slide has authoring tips in the notes. This is the center template — one focused idea, no distractions."
+  background_color: "#f0f9ff"
   notes: |
-    - This slide itself has speaker notes — you're looking at them!
-    - The presenter view shows notes, a timer, and a preview of the next slide
-    - Press Escape for the slide overview
+    You're looking at the center template right now.
+    It puts a single statement front and center — no bullets, no columns, just the message.
+    Use it for pivotal moments, questions, or impactful statements.
+    Press Escape for the slide overview grid.
 
-# Slide 3: Agenda
+# Slide 3: What You Will See
 - template: agenda
-  title: Agenda
+  title: "What You Will See"
   auto_generate: true
   notes: |
-    - Four sections covering why, what, how, and where we're headed
-    - Click any section to jump directly there
-    - This slide uses auto_generate to build the agenda from section slides
+    The agenda template with auto_generate: true builds this list automatically
+    from every section slide in the deck. Click any section to jump directly there.
+    You can also define sections manually with a sections array.
 
 # =============================================================================
-# SECTION 2: THE PROBLEM
+# SECTION 1: FOUNDATIONS
 # =============================================================================
 
-# Slide 4: Section Divider
+# Slide 4: Section — Foundations
 - template: section
-  title: The Problem
-  subtitle: "Creating presentations is painful and slow"
+  title: Foundations
+  subtitle: "The building blocks of every deck"
+  transition: fade
+  background_gradient: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)"
   notes: |
-    - Let's start with the pain that everyone in this room knows
-    - We've all been there — 2am tweaking slide layouts
+    Section slides divide your deck into chapters.
+    They hide the footer by default to create a clean break.
+    Add transition: fade for a smooth entry, and a gradient for visual polish.
 
-# Slide 5: Death by PowerPoint
+# Slide 5: The Content Template
 - template: content
-  title: "Death by PowerPoint — and AI hasn't fixed it"
-  lead: "People tried ChatGPT, Gamma, and Manus. The pain just moved."
+  title: The Content Template
+  lead: "Your workhorse for structured information"
+  fragment: fade-up
   items:
-    - "<strong>Generic, bloated output</strong> — AI dumps walls of text onto slides with no visual hierarchy"
-    - "<strong>All-or-nothing generation</strong> — change one slide and you regenerate the entire deck"
-    - "<strong>No version control</strong> — still binary PPTX files you can't diff, merge, or review"
-    - "<strong>Broken exports</strong> — Gamma to PowerPoint mangles layouts, fonts, and sizing"
-    - "<strong>Black-box styling</strong> — can't set precise fonts, colors, or spacing; stuck with what the AI picks"
+    - "The <strong>lead</strong> field adds an intro paragraph above the bullets"
+    - "Use <strong>items</strong> for bullet lists or <strong>ordered_items</strong> for numbered lists"
+    - "Nested lists use map syntax:":
+        - "Parent string ends with a colon"
+        - "Children are indented underneath"
+    - "Add <strong>fragment: fade-up</strong> to reveal items one by one"
+    - "The <strong>text</strong> field adds a standalone paragraph without bullets"
   notes: |
-    - This reframes the problem — it's not just PowerPoint anymore
-    - People moved to ChatGPT/Gamma/Manus and found new frustrations
-    - Reddit is full of complaints: generic content, too much text, broken PPTX exports
-    - The root cause is the same — content and design are still entangled
+    The content template is the most versatile — use it for any structured information.
+    This slide demonstrates lead text, a nested list, and fragment animation.
+    Keep bullets to 3-5 per slide for readability.
 
-# Slide 6: AI Presentation Tools vs. lazyslides
-- template: comparison
-  title: "AI Presentation Tools vs. lazyslides"
-  left_header: "ChatGPT / Gamma / Manus"
-  right_header: "lazyslides"
-  highlight: right
-  rows:
-    - left: "Generates entire deck — all or nothing"
-      right: "Edit one slide without touching the rest"
-      right_icon: good
-    - left: "Generic content, walls of text"
-      right: "You control every word in YAML"
-      right_icon: good
-    - left: "PPTX export breaks layouts"
-      right: "Renders natively in the browser"
-      right_icon: good
-    - left: "Black-box styling, no fine control"
-      right: "Full design system with tokens"
-      right_icon: good
-    - left: "No version control or diffs"
-      right: "Plain text — clean git history"
-      right_icon: good
-  notes: |
-    - The comparison template highlights the contrast
-    - Right column is highlighted by default — you can flip it with highlight: left
-    - Key insight: YAML is what AI models read and write natively
-
-# Slide 7: What if slides were just data?
-- template: center
-  title: "What if slides were just data?"
-  text: "Pure YAML in, professional slides out."
-  notes: |
-    - This is the core idea — treat presentations as structured data
-    - The center template puts one thought front and center
-    - No distractions, just the message
-
-# Slide 8: Personal Testimony
-- template: quote
-  quote: "I built a 16-slide investor pitch in under an hour. The same deck would have taken a full day in PowerPoint — and it wouldn't have looked this consistent."
-  author: "Chrisissorry"
-  author_title: "Creator, lazyslides"
-  notes: |
-    - Real experience from building the daemetric pitch deck
-    - The quote template adds gravitas to testimonials
-    - Notice the decorative quote marks and attribution styling
-
-# Slide 9: Zero to Slides in Minutes
-- template: hero
-  title: "Zero to Slides in Minutes"
-  color: "#1a1a2e"
-  box_title: "The Agentic Workflow"
-  box_items:
-    - "<strong>1. Tell your topic</strong> — describe what you want to present"
-    - "<strong>2. AI generates YAML</strong> — Claude maps content to templates"
-    - "<strong>3. Engine renders</strong> — Eleventy builds production-ready slides"
-  notes: |
-    - The hero template creates dramatic, full-bleed impact
-    - Using color fallback since no background image needed
-    - The callout box provides structured detail over the dark background
-
-# =============================================================================
-# SECTION 3: HOW IT WORKS
-# =============================================================================
-
-# Slide 10: Section Divider
-- template: section
-  title: How It Works
-  subtitle: "Architecture and template system"
-  notes: |
-    - Now let's look under the hood
-    - Three layers that keep concerns cleanly separated
-
-# Slide 11: Engine at a Glance
+# Slide 6: The Metrics Template
 - template: metrics
-  title: Engine at a Glance
+  title: The Metrics Template
+  fragment: fade-in
   metrics:
     - value: "17"
       label: "Templates"
-      context: "From title cards to funnels"
+      context: "Slide types in the engine"
       color: mint
-    - value: "0"
-      label: "Lines of HTML"
-      context: "Authors write pure YAML"
+    - value: "6"
+      label: "Themes"
+      context: "Visual identities included"
       color: coral
     - value: "960×540"
       label: "Canvas"
       context: "16:9 ratio, auto-scaled"
       color: icy
-    - value: "<1 min"
-      label: "Build Time"
-      context: "Validate + Eleventy + Reveal.js"
+    - value: "18"
+      label: "Fragment Effects"
+      context: "Animation options per item"
       color: amber
   notes: |
-    - The metrics template auto-detects 2, 3, or 4 cards
-    - Each card can have its own color: mint, coral, icy, amber, or default mauve
-    - The zero HTML stat is the key selling point — pure YAML authoring
+    The metrics template displays 2-4 statistic cards in a row.
+    Each card takes value, label, and optional context text.
+    Colors: mint, coral, icy, amber, or default mauve.
+    These are real LazySlides engine stats.
 
-# Slide 12: What a Slide Looks Like
-- template: code
-  title: What a Slide Looks Like
-  language: yaml
-  code: "slides:\n  - template: metrics\n    title: Engine at a Glance\n    metrics:\n      - value: \"17\"\n        label: Templates\n        color: mint\n      - value: \"0\"\n        label: Lines of HTML\n        color: coral"
-  caption: "YAML that produces a metrics slide — no HTML needed"
-  notes: |
-    - This is the aha moment — the previous slide is just this YAML
-    - The code template provides syntax highlighting for any language
-    - Meta: this slide shows the code that makes the metrics slide work
-
-# Slide 13: Three Layers
-- template: content
-  title: "Architecture: Three Layers"
-  lead: "Clean separation of content, templates, and styling"
-  items:
-    - "<strong>Content layer</strong> — pure YAML in presentations/ folders":
-        - "One index.md per presentation"
-        - "No HTML, no Markdown body — just frontmatter"
-    - "<strong>Template layer</strong> — 17 Nunjucks includes in _includes/slides/":
-        - "Each template has a docblock with YAML schema"
-        - "Nunjucks templating maps YAML fields to HTML"
-    - "<strong>Style layer</strong> — Tailwind CSS + theme files":
-        - "Design tokens in src/styles.css @theme block"
-        - "One CSS file per brand theme"
-  notes: |
-    - This architecture means you can change any layer independently
-    - Content authors never see HTML — templates never touch styling
-    - Nested lists use the map syntax — this slide demonstrates it
-
-# Slide 14: Template Reference
+# Slide 7: The Table Template
 - template: table
-  title: Template Reference
+  title: The Table Template
   columns:
-    - Template
-    - Best For
-    - Key Fields
+    - Field
+    - Type
+    - Purpose
   rows:
-    - ["title", "Opening and closing slides", "subtitle, author, logo"]
-    - ["section", "Chapter dividers", "subtitle"]
-    - ["agenda", "Clickable table of contents", "sections (title + slide)"]
-    - ["content", "Bullet points, main content", "items, lead, ordered_items"]
-    - ["center", "Single statement or image", "text, image"]
-    - ["hero", "Full-bleed dramatic impact", "image/color, box_items"]
-    - ["metrics", "2-4 key statistics", "metrics (value, label, color)"]
-    - ["comparison", "Before/after, A vs B", "rows, highlight"]
-  reference: "8 of 17 templates shown — continued on next slide"
+    - ["columns", "Array of strings", "Defines the column headers you see above"]
+    - ["rows", "Array of arrays", "Each inner array is one row of cell values"]
+    - ["title", "String", "The slide heading — required on every table slide"]
+    - ["reference", "String", "Attribution line below the table"]
+  reference: "This table describes its own fields"
   notes: |
-    - The table template supports up to 6 columns and 8 rows
-    - Every template you've seen so far is listed here
-    - This is the table template in action — auto-styled with alternating rows
+    The table template renders data with styled headers and alternating row shading.
+    Each row is a simple array of strings — no complex objects needed.
+    Best for 3-6 columns and up to 8 rows. Keep cell text short.
 
-# Slide 15: Templates (continued)
-- template: columns
-  title: "Templates (continued)"
-  left_title: "Layout Templates"
-  left_items:
-    - "<strong>columns</strong> — side-by-side content"
-    - "<strong>split</strong> — 1/3 image + 2/3 content"
-    - "<strong>split-wide</strong> — 1/3 content + 2/3 image"
-    - "<strong>code</strong> — syntax-highlighted snippets"
-    - "<strong>table</strong> — data with headers"
-  right_title: "Visualization Templates"
-  right_items:
-    - "<strong>timeline</strong> — horizontal event sequence"
-    - "<strong>funnel</strong> — progressive narrowing stages"
-    - "<strong>quote</strong> — testimonial with attribution"
-    - "<strong>image-overlay</strong> — background image + text box"
+# Slide 8: Quote
+- template: quote
+  transition: fade
+  quote: "The best slides feel effortless. That only happens when the tooling disappears and the content speaks for itself."
+  author: "Design Principle"
+  author_title: "LazySlides Philosophy"
   notes: |
-    - The columns template splits content into two equal halves
-    - Between the table on the previous slide and this one, all 17 templates are listed
-    - Layout vs visualization is a useful mental model for template selection
-
-# Slide 16: Theming System
-- template: split
-  title: Theming System
-  image: images/theming.jpg
-  image_alt: "Abstract landscape representing visual themes"
-  items:
-    - "<strong>One CSS file per brand</strong> — drop in a theme, everything adapts"
-    - "<strong>Themeable properties:</strong>":
-        - "Fonts (heading + body)"
-        - "Color palette (primary + semantic)"
-        - "Logo and footer branding"
-        - "Background patterns"
-    - "<strong>Design tokens</strong> — all spacing, typography, and colors defined in @theme"
-    - "<strong>Default theme</strong> — neutral starter for new projects"
-  notes: |
-    - The split template shows 1/3 image + 2/3 content
-    - Works without an image too — the content expands
-    - Theming is just CSS custom properties — no template changes needed
-
-# Slide 17: Presenter Features
-- template: split-wide
-  title: Presenter Features
-  image: images/dashboard-example.png
-  image_alt: "Example presentation rendered by the engine"
-  items:
-    - "<strong>Speaker notes</strong> — press S for presenter view with notes, timer, and next-slide preview"
-    - "<strong>PDF export</strong> — one-command export via Puppeteer and DeckTape at 1920x1080"
-    - "<strong>Image lightbox</strong> — click any image to view fullscreen via GLightbox"
-    - "<strong>Keyboard navigation</strong> — arrow keys, Escape for overview, F for fullscreen"
-  notes: |
-    - The split-wide template is the inverse of split — 1/3 content, 2/3 image
-    - Press S right now to see these speaker notes in action
-    - PDF export runs bin/export-pdf.sh — handles validation, build, and export
-
-# Slide 18: Why YAML + AI Works
-- template: content
-  title: Why YAML + AI Works
-  items:
-    - "<strong>Structured data AI reads/writes natively</strong> — no pixel coordinates, no XML namespaces"
-    - "<strong>Clean git diffs</strong> — review slide changes line by line in pull requests"
-    - "<strong>Atomic per-slide edits</strong> — change one slide without touching the rest"
-    - "<strong>Validation catches errors before the audience</strong> — schema checks run on every build"
-    - "<strong>Composable</strong> — copy slides between decks, merge presentations, build libraries"
-  notes: |
-    - This is the philosophical core of the project
-    - AI models produce better YAML than they produce PowerPoint XML
-    - Git diffs mean you can code-review presentations like code
+    The quote template adds decorative quotation marks and styled attribution.
+    It needs no title — the quote IS the content.
+    Use it for testimonials, design principles, or memorable statements.
+    The fade transition gives it a calm, considered entrance.
 
 # =============================================================================
-# SECTION 4: THE AGENTIC WORKFLOW
+# SECTION 2: LAYOUTS
 # =============================================================================
 
-# Slide 19: Section Divider
+# Slide 9: Section — Layouts
 - template: section
-  title: The Agentic Workflow
-  subtitle: "Claude Code as presentation co-pilot"
+  title: Layouts
+  subtitle: "Templates that arrange content spatially"
+  transition: fade
+  background_gradient: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)"
   notes: |
-    - This section covers the AI-powered creation workflow
-    - Claude Code has full context about the engine via CLAUDE.md
+    This section covers templates that divide the slide into distinct spatial zones.
+    Split, split-wide, columns, and comparison each divide space differently.
+    Choosing the right layout makes content easier to scan.
 
-# Slide 20: From Topic to Slides
+# Slide 10: The Split Template
+- template: split
+  title: The Split Template
+  fragment: fade-up
+  image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=640&h=1080&fit=crop&q=80&auto=format"
+  image_alt: "Colorful paint wall in shallow focus"
+  reference: "Photo by Robert Katzki on Unsplash"
+  reference_link: "https://unsplash.com/@ro_ka?utm_source=lazyslides&utm_medium=referral"
+  items:
+    - "1/3 image panel + 2/3 content panel"
+    - "Image fills its panel with <strong>object-fit: cover</strong> — edges may crop"
+    - "Click any image to view fullscreen via lightbox"
+    - "Supports nested lists, fragments, and references"
+  notes: |
+    Split gives you a portrait-oriented image alongside your content.
+    Best with images at least 640×1080 (2x for retina).
+    The image is cropped from center, so keep the subject centered.
+
+# Slide 11: The Split-Wide Template
+- template: split-wide
+  title: The Split-Wide Template
+  image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?w=1280&h=1080&fit=crop&q=80&auto=format"
+  image_alt: "Speaker presenting on stage at a conference"
+  reference: "Photo by Product School on Unsplash"
+  reference_link: "https://unsplash.com/@productschool?utm_source=lazyslides&utm_medium=referral"
+  items:
+    - "Inverted layout: 1/3 content + 2/3 image"
+    - "Best for landscape photos and screenshots"
+    - "Recommended image size: 1280×1080 or larger"
+    - "Same fields as split — title, text, items, image"
+  notes: |
+    Split-wide is the mirror image of split — the image takes the larger panel.
+    Great for screenshots, dashboards, or landscape photography.
+    The content panel sits on the left with a narrower width.
+
+# Slide 12: The Columns Template
+- template: columns
+  title: The Columns Template
+  fragment: fade-in
+  left_title: "When to Use"
+  left_items:
+    - "Two equal content panels side by side"
+    - "Each column has its own title, text, and items"
+    - "Great for contrasting or parallel ideas"
+  right_title: "Key Details"
+  right_items:
+    - "Both columns animate together with fragment"
+    - "Text-only — no images in this template"
+    - "Keep content balanced between sides"
+  notes: |
+    The columns template creates two equal halves — perfect for comparisons,
+    pros/cons, or any two parallel topics. Each side gets its own title and bullets.
+    Keep the content roughly equal in length for visual balance.
+
+# Slide 13: The Comparison Template
+- template: comparison
+  title: The Comparison Template
+  fragment: fade-up
+  left_header: "Columns Template"
+  right_header: "Comparison Template"
+  highlight: right
+  rows:
+    - left: "Equal halves layout"
+      right: "Row-by-row table layout"
+    - left: "Free-form content per side"
+      right: "Structured left/right cells"
+    - left: "No icons"
+      right: "Good/bad icon marks"
+      right_icon: true
+    - left: "Best for parallel topics"
+      right: "Best for evaluations"
+      right_icon: true
+  notes: |
+    The comparison template structures content as rows with left/right cells.
+    Use highlight: left or right to emphasize the winning column.
+    Add left_icon/right_icon: true for checkmark indicators.
+    This slide compares itself to the columns template — meta!
+
+# =============================================================================
+# SECTION 3: VISUAL IMPACT
+# =============================================================================
+
+# Slide 14: Section — Visual Impact
+- template: section
+  title: Visual Impact
+  subtitle: "Templates that command attention"
+  transition: fade
+  background_gradient: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)"
+  notes: |
+    These templates use bold visuals — full-bleed images, gradients, and overlays.
+    Use them for dramatic moments, chapter openers, or hero statements.
+    A little goes a long way — mix with quieter slides for contrast.
+
+# Slide 15: The Hero Template
+- template: hero
+  title: The Hero Template
+  transition: zoom
+  background_gradient: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)"
+  box_title: "Full-Bleed Impact"
+  box_items:
+    - "Dark overlay with a bold headline"
+    - "Optional text box for structured details"
+    - "Use <strong>image</strong> for photos or <strong>background_gradient</strong> for color"
+  notes: |
+    The hero template fills the entire viewport with an image or gradient.
+    The box overlay provides readable content over dark backgrounds.
+    Use transition: zoom sparingly — it's dramatic but can feel heavy.
+    Limit to 1-2 zoom transitions per deck.
+
+# Slide 16: The Image-Overlay Template
+- template: image-overlay
+  image: "https://images.unsplash.com/photo-1576400883215-7083980b6193?w=1920&h=1080&fit=crop&q=80&auto=format"
+  position: bottom-left
+  title: The Image-Overlay Template
+  reference: "Photo by Cristiano Firmani on Unsplash"
+  reference_link: "https://unsplash.com/@cristianofirmani?utm_source=lazyslides&utm_medium=referral"
+  items:
+    - "Background image fills the viewport"
+    - "Text box can be placed in four positions"
+    - "Supports title, text, and items in the overlay"
+  notes: |
+    Image-overlay places a semi-transparent text box over a full-bleed photo.
+    Set position to top-left, top-right, bottom-left, or bottom-right.
+    The image should be at least 1920×1080 for sharp results.
+
+# Slide 17: Center with Backgrounds
+- template: center
+  title: "Center with Backgrounds"
+  text: "Add background_color or background_gradient to any template for visual variety. This slide demonstrates both the center template and background enhancements."
+  transition: fade
+  background_gradient: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)"
+  notes: |
+    Background properties work on every template, not just hero and image-overlay.
+    Use background_color for solid fills, background_gradient for gradients,
+    or background_image to put any photo behind any slide type.
+    Keep gradients subtle on text-heavy slides for readability.
+
+# Slide 18: The Code Template
+- template: code
+  title: The Code Template
+  language: yaml
+  code: "- template: code\n  title: The Code Template\n  language: yaml\n  code: \"...\"\n  caption: \"This slide's own YAML\""
+  caption: "This slide's own YAML — a self-referential code block"
+  notes: |
+    The code template provides syntax highlighting for any language.
+    Set language to yaml, javascript, python, bash, or any Highlight.js language.
+    The caption field adds a description below the code block.
+    This slide shows its own YAML — it's code all the way down.
+
+# =============================================================================
+# SECTION 4: FLOW & MOTION
+# =============================================================================
+
+# Slide 19: Section — Flow & Motion
+- template: section
+  title: "Flow & Motion"
+  subtitle: "Templates that show process and progression"
+  transition: fade
+  background_gradient: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%)"
+  notes: |
+    These templates visualize sequences, processes, and progressive narrowing.
+    Timeline for events, funnel for stages, and auto-animate for morphing code.
+
+# Slide 20: The Timeline Template
 - template: timeline
-  title: From Topic to Slides
+  title: The Timeline Template
+  fragment: fade-in
   events:
     - date: "Step 1"
-      title: "Research"
-      text: "Gather data, quotes, and structure"
+      title: "Define"
+      text: "Set date, title, and text for each event"
     - date: "Step 2"
-      title: "Outline"
-      text: "Define sections, key messages, slide count"
+      title: "Populate"
+      text: "Add 3-5 events for visual balance"
     - date: "Step 3"
-      title: "Template Mapping"
-      text: "Match each slide to the right template"
+      title: "Animate"
+      text: "Optional fragment for progressive reveal"
     - date: "Step 4"
-      title: "YAML Generation"
-      text: "AI writes the full index.md"
-    - date: "Step 5"
-      title: "Validate & Build"
-      text: "Schema check, Eleventy build, preview"
+      title: "Present"
+      text: "Cards alternate above and below the line"
   notes: |
-    - The timeline template shows horizontal progression with alternating cards
-    - Each step can be done by the AI agent with human review
-    - The whole flow typically takes under 10 minutes for a 20-slide deck
+    The timeline template arranges events horizontally with alternating card positions.
+    Each event has a date badge, title, and description text.
+    Best with 3-5 events — more than that gets crowded.
 
-# Slide 21: Claude Code Integration
-- template: content
-  title: Claude Code Integration
-  lead: "CLAUDE.md gives the AI full context about the engine"
-  items:
-    - "<strong>/new-presentation</strong> — slash command that walks through the full creation workflow"
-    - "<strong>CLAUDE.md context</strong> — architecture, templates, YAML syntax, validation rules"
-    - "<strong>Pre-approved build commands</strong> — pnpm dev runs without confirmation"
-    - "Planned slash commands:":
-        - "/add-slide — insert a new slide at any position"
-        - "/retheme — switch a presentation's visual theme"
-        - "/export-pdf — generate PDF from the command line"
-  notes: |
-    - Claude Code reads CLAUDE.md automatically for project context
-    - The new-presentation command follows a 7-step agentic workflow
-    - Slash commands give natural-language access to engine operations
-
-# Slide 22: Idea to Delivered Deck
+# Slide 21: The Funnel Template
 - template: funnel
-  title: Idea to Delivered Deck
+  title: The Funnel Template
+  fragment: fade-up
   stages:
-    - label: "Topic"
-      text: "A rough idea or brief from the speaker"
-    - label: "Research"
-      text: "Data, quotes, competitive landscape"
-    - label: "Outline"
-      text: "Sections, slide titles, key messages"
-    - label: "YAML Slides"
-      text: "Template-mapped, validated presentation"
-    - label: "Polished Deck"
-      text: "Themed, reviewed, ready to present"
+    - label: "YAML Input"
+      text: "Author writes structured slide data"
+    - label: "Validation"
+      text: "Schema checks catch errors before build"
+    - label: "Template Engine"
+      text: "Nunjucks maps fields to HTML"
+    - label: "Reveal.js Output"
+      text: "Interactive, themed presentation"
   notes: |
-    - The funnel template shows progressive narrowing from broad to specific
-    - Each stage reduces ambiguity — from vague topic to pixel-perfect slides
-    - Best with 3-7 stages for visual clarity
+    The funnel template shows progressive narrowing from broad to specific.
+    Each stage gets a label and optional description text.
+    This slide traces the LazySlides build pipeline as its example content.
+    Best with 3-5 stages for visual clarity.
 
-# Slide 23: Build Pipeline
-- template: image-overlay
-  image: images/pipeline.jpg
-  position: bottom-left
-  title: Build Pipeline
-  items:
-    - "validate-presentations.js checks YAML schema"
-    - "Eleventy compiles YAML to Reveal.js HTML"
-    - "Tailwind processes design tokens"
-    - "Reveal.js renders interactive slides"
-  notes: |
-    - The image-overlay template places a text box over a background image
-    - Four positions available: top-left, top-right, bottom-left, bottom-right
-    - The arrow image reinforces the directional flow of the pipeline
-
-# Slide 24: Open Core Model
-- template: columns
-  title: Open Core Model
-  left_title: "Free & Open Source"
-  left_items:
-    - "Engine and all 17 templates"
-    - "Default starter theme"
-    - "Claude Code integration"
-    - "PDF export"
-    - "MIT License"
-  right_title: "Commercial Potential"
-  right_items:
-    - "Premium brand themes"
-    - "Hosted presentation service"
-    - "Team collaboration features"
-    - "Priority support"
-    - "Custom template development"
-  notes: |
-    - Open core means the engine is always free
-    - Revenue comes from themes, hosting, and services
-    - MIT license means no restrictions on commercial use
-
-# =============================================================================
-# SECTION 5: GET STARTED
-# =============================================================================
-
-# Slide 25: Section Divider
-- template: section
-  title: "Get Started"
-  subtitle: "From zero to slides in under a minute"
-  notes: |
-    - Final section — how to start using lazyslides today
-    - One command to scaffold, one to preview
-
-# Slide 26: Installation
+# Slide 22: Auto-Animate in Action (Step 1)
 - template: code
-  title: Get Started in 30 Seconds
-  language: bash
-  code: "# Create a new presentation project\npnpm dlx lazyslides init my-deck\n\n# Start the dev server\ncd my-deck\npnpm dev"
-  caption: "One command to scaffold, one to preview — open localhost:8080 to see your slides"
+  title: "Auto-Animate in Action"
+  auto_animate: true
+  language: yaml
+  code: "- template: content\n  title: My Slide"
+  caption: "Start simple — auto-animate morphs matching elements"
   notes: |
-    - pnpm dlx downloads and runs the CLI without global install
-    - The init command scaffolds a full project with config, styles, and an example presentation
-    - pnpm dev starts Eleventy with hot reload — edit YAML, see changes instantly
+    Auto-animate is a Reveal.js feature that morphs matching DOM elements
+    between consecutive slides. Both slides need auto_animate: true.
+    Watch the code block expand smoothly on the next slide.
 
-# Slide 27: Create a Deck with AI
+# Slide 23: Auto-Animate in Action (Step 2)
+- template: code
+  title: "Auto-Animate in Action"
+  auto_animate: true
+  language: yaml
+  code: "- template: content\n  title: My Slide\n  lead: \"An introductory paragraph\"\n  fragment: fade-up\n  items:\n    - \"First insight\"\n    - \"Second insight\""
+  caption: "Fields added — the code block expanded with a smooth morph"
+  notes: |
+    The title stayed still while the code block grew — that's auto-animate.
+    Any matching elements (same tag, same position) morph automatically.
+    Use it for progressive code reveals, expanding diagrams, or step-by-step builds.
+
+# =============================================================================
+# CLOSING
+# =============================================================================
+
+# Slide 24: Tips for Great Decks
 - template: content
-  title: Create a Deck with AI
-  lead: "Open Claude Code in your project and try:"
+  title: Tips for Great Decks
+  lead: "Design principles baked into the engine"
+  fragment: fade-up
   items:
-    - "\"Create a 12-slide presentation about [your topic]. Use the /new-presentation command to research, outline, and generate the YAML.\""
-    - "<strong>Claude reads CLAUDE.md</strong> — it already knows the templates, YAML schema, and validation rules"
-    - "<strong>Slash commands guide the workflow</strong> — /new-presentation, /add-slide, /refine-slides"
-    - "<strong>Iterate naturally</strong> — edit YAML directly or ask Claude to modify specific slides"
+    - "One idea per slide — if you need a second point, make a second slide"
+    - "Add section dividers every 4-7 slides to create rhythm and breathing room"
+    - "Mix template types — alternate between text, visual, and data slides"
+    - "Use fragments on fewer than half your slides — too much animation fatigues the audience"
+    - "Write speaker notes on every slide — they help you rehearse and help others present your deck"
   notes: |
-    - Claude Code picks up context from CLAUDE.md automatically
-    - The slash commands are defined in the project and walk through multi-step workflows
-    - You can also just edit the YAML by hand — it's plain text
+    These guidelines are baked into the LazySlides design skill.
+    The engine validates structure, but good content still requires human judgment.
+    When in doubt, simplify — fewer words, more white space, clearer hierarchy.
 
-# Slide 28: Closing
+# Slide 25: Closing
 - template: title
-  title: lazyslides
-  subtitle: "YAML in. Slides out."
-  author: "Chrisissorry — github.com/chris-tietz/lazyslides"
+  title: LazySlides
+  subtitle: "YAML In. Slides Out."
+  transition: fade
+  transition_speed: slow
+  author: "github.com/Chrisissorry/lazyslides"
   logo: false
   notes: |
-    - Thank you for watching
-    - Every slide in this deck was authored in pure YAML
-    - The presentation is the proof — 29 slides, 17 templates, zero HTML
+    Thank you for exploring the showcase.
+    Every slide was authored in pure YAML — no HTML, no drag-and-drop.
+    25 slides, 17 templates, 5 sections, zero lines of HTML.
 ---
