@@ -1,7 +1,8 @@
 {# TEMPLATE: agenda — Clickable table of contents for presentation sections.
    Set auto_generate: true to build the agenda automatically from section slides.
    Manual mode: provide sections array with title and slide (0-based index). #}
-<section class="slide-agenda">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-agenda"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title | default("Agenda") }}</h2>

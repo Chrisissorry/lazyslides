@@ -31,10 +31,10 @@ describe("agenda auto_generate", () => {
     }
 
     expect(links.length).toBe(4);
-    expect(links[0].title).toBe("The Problem");
-    expect(links[1].title).toBe("How It Works");
-    expect(links[2].title).toBe("The Agentic Workflow");
-    expect(links[3].title).toBe("Get Started");
+    expect(links[0].title).toBe("Foundations");
+    expect(links[1].title).toBe("Layouts");
+    expect(links[2].title).toBe("Visual Impact");
+    expect(links[3].title).toBe("Flow & Motion");
   });
 
   it("uses 0-based slide indices matching section positions", () => {

@@ -2,6 +2,7 @@
 
 @source "../_includes/**/*.njk";
 @source "../_layouts/**/*.njk";
+@source "../index.js";
 
 @theme {
   /* ============================================
@@ -115,58 +116,36 @@ html, body {
    REVEAL.JS CORE VARIABLES
    ============================================ */
 
-.reveal {
-  /* Slides themselves are white cards on the theater background */
-  --r-background-color: transparent;
+/* Reveal.js variable defaults — zero specificity so Reveal.js
+   built-in themes (which use .reveal {}) always win when loaded */
+:where(.reveal) {
+  --reveal-margin: 0;  /* Full-viewport by default; themes can override */
+  --r-background-color: var(--color-background);
   --r-main-color: var(--color-text);
   --r-heading-color: var(--color-text-heading);
-
   --r-main-font: var(--font-body);
-  --r-main-font-size: 14px;
   --r-heading-font: var(--font-heading);
   --r-code-font: var(--font-mono);
-
   --r-link-color: var(--color-primary);
   --r-link-color-hover: var(--color-primary-dark);
-
   --r-selection-background-color: var(--color-primary);
   --r-selection-color: white;
+}
+
+.reveal {
+  --r-main-font-size: 14px;
 
   /* Slide padding */
   --slide-padding: 40px;
 }
 
-/* Make the reveal viewport transparent so theater background shows */
-.reveal-viewport {
-  background: transparent !important;
-}
-
 /* ============================================
-   SLIDE CARD STYLING
-   Each slide is a white card with rounded corners
-   and subtle shadow, floating on theater background
+   SLIDE BASE
+   Full-viewport slides (Reveal.js standard)
    ============================================ */
-
-.reveal .slides {
-  /* Reveal.js margin config handles viewport spacing */
-}
 
 .reveal .slides > section,
 .reveal .slides > section > section {
-  /* White card background */
-  background: #ffffff;
-
-  /* Rounded corners */
-  border-radius: 6px;
-
-  /* Subtle border for crisp edge */
-  border: 1px solid var(--color-slate-200);
-
-  /* Soft shadow for depth */
-  box-shadow:
-    0 2px 3px -1px rgba(0, 0, 0, 0.07),
-    0 5px 10px -3px rgba(0, 0, 0, 0.05);
-
   /* Clip content that overflows slide boundaries */
   overflow: hidden;
 }
@@ -522,11 +501,17 @@ html, body {
   height: 100%;
   padding: 0;
   color: white;
-  /* Override card styling for full-bleed */
-  border-radius: 6px;
   overflow: hidden;
   /* Fallback background for slides without image */
   background: var(--color-slate-600);
+}
+
+/* When Reveal.js manages the background, make the section transparent
+   so the full-viewport data-background layer shows through */
+.reveal .slides section.slide-hero[data-background-color],
+.reveal .slides section.slide-hero[data-background-image],
+.reveal .slides section.slide-hero[data-background] {
+  background: transparent;
 }
 
 .reveal .slides section.slide-hero::before {
@@ -570,13 +555,17 @@ html, body {
 
 .reveal .slides section.slide-hero .text-box {
   background: rgba(255, 255, 255, 0.97);
-  padding: 16px 20px;
+  padding: 20px 24px;
   border-radius: 6px;
   text-align: left;
-  max-width: 300px;
+  max-width: 380px;
   margin-top: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   border-left: 3px solid var(--color-primary-500);
+}
+
+.reveal .slides section.slide-hero .text-box li + li {
+  margin-top: 4px;
 }
 
 .reveal .slides section.slide-hero .text-box h3 {
@@ -622,6 +611,7 @@ html, body {
   gap: 16px;
   flex: 1;
   align-content: center;
+  padding-bottom: 40px;
 }
 
 .reveal .slides section.slide-metrics .metrics-grid.cols-2 {
@@ -871,7 +861,7 @@ html, body {
 }
 
 .reveal .slides section.slide-table tr:nth-child(even) td {
-  background: white;
+  background: var(--color-background);
 }
 
 .reveal .slides section.slide-table tr:last-child td {
@@ -928,6 +918,55 @@ html, body {
 
 .reveal .slides section.slide-columns .column p {
   margin-bottom: 10px;
+}
+
+/* ============================================
+   SLIDE: THREE-COLUMNS
+   Three equal-width column layout
+   ============================================ */
+
+.reveal .slides section.slide-three-columns {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100%;
+  padding: 0;
+  text-align: left;
+}
+
+.reveal .slides section.slide-three-columns .slide-body {
+  flex: 1;
+  padding: var(--slide-padding);
+  padding-bottom: 12px;
+  min-height: 0;
+}
+
+.reveal .slides section.slide-three-columns .slide-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-primary-500);
+}
+
+.reveal .slides section.slide-three-columns .three-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+.reveal .slides section.slide-three-columns .column h3 {
+  color: var(--color-primary-700);
+  margin-bottom: 8px;
+}
+
+.reveal .slides section.slide-three-columns .column p {
+  margin-bottom: 10px;
+}
+
+.reveal .slides section.slide-three-columns .column li {
+  font-size: 12px;
+  margin-bottom: 6px;
 }
 
 /* ============================================
@@ -996,7 +1035,6 @@ html, body {
   flex-direction: column;
   height: 100%;
   padding: 0;
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -1086,15 +1124,22 @@ html, body {
   padding: var(--slide-padding);
   padding-bottom: 12px;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .reveal .slides section.slide-code .slide-header {
   margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
 }
 
 .reveal .slides section.slide-code pre {
-  flex: 1;
   margin: 0;
+  max-width: 700px;
+  width: 100%;
 }
 
 .reveal .slides section.slide-code .caption {
@@ -1196,7 +1241,7 @@ html, body {
   transform: translate(-50%, -50%);
   width: 14px;
   height: 14px;
-  background: white;
+  background: var(--color-background);
   border: 3px solid var(--color-primary-500);
   border-radius: 50%;
   z-index: 3;
@@ -1443,19 +1488,19 @@ html, body {
 }
 
 .reveal .slides section.slide-split .split-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: var(--color-slate-50);
-  border-right: 1px solid var(--color-slate-200);
+  overflow: hidden;
+}
+
+.reveal .slides section.slide-split .split-image .glightbox {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .reveal .slides section.slide-split .split-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .reveal .slides section.slide-split .split-content {
@@ -1508,7 +1553,6 @@ html, body {
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  border-right: 1px solid var(--color-slate-200);
 }
 
 .reveal .slides section.slide-split-wide .split-wide-content .slide-header {
@@ -1528,18 +1572,33 @@ html, body {
 }
 
 .reveal .slides section.slide-split-wide .split-wide-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: var(--color-slate-50);
+  overflow: hidden;
+}
+
+.reveal .slides section.slide-split-wide .split-wide-image .glightbox {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .reveal .slides section.slide-split-wide .split-wide-image img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* image_fit: contain — show full image without cropping */
+.reveal .slides section.slide-split .split-image.image-contain,
+.reveal .slides section.slide-split-wide .split-wide-image.image-contain {
+  background: var(--color-slate-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal .slides section.slide-split .split-image.image-contain img,
+.reveal .slides section.slide-split-wide .split-wide-image.image-contain img {
   object-fit: contain;
-  border-radius: 4px;
 }
 
 /* ============================================
@@ -1555,6 +1614,101 @@ html, body {
 
 .reveal .bg-surface { background: var(--color-surface); }
 .reveal .bg-surface-alt { background: var(--color-surface-alt); }
+
+/* ============================================
+   BACKGROUND IMAGE OVERLAY
+   Dark scrim + white text for any slide with a background image.
+   Hero and image-overlay have their own overlay logic, so they're excluded.
+   ============================================ */
+
+.reveal .slides section[data-background-image]:not(.slide-hero):not(.slide-image-overlay)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  z-index: 1;
+}
+
+.reveal .slides section[data-background-image]:not(.slide-hero):not(.slide-image-overlay) > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Headings over dark overlay */
+.reveal .slides section[data-background-image]:not(.slide-hero):not(.slide-image-overlay) h1,
+.reveal .slides section[data-background-image]:not(.slide-hero):not(.slide-image-overlay) h2 {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Section divider subtitle */
+.reveal .slides section.slide-section[data-background-image] .subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Title slide text */
+.reveal .slides section.slide-title[data-background-image] .subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reveal .slides section.slide-title[data-background-image] .author {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.reveal .slides section.slide-title[data-background-image] .decorative-line {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7));
+}
+
+/* Quote text — dark background (image or color) */
+.reveal .slides section.slide-quote[data-background-image] blockquote,
+.reveal .slides section.slide-quote[data-background-color] blockquote {
+  color: white;
+}
+
+.reveal .slides section.slide-quote[data-background-image] .quote-mark,
+.reveal .slides section.slide-quote[data-background-color] .quote-mark {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.reveal .slides section.slide-quote[data-background-image] .attribution,
+.reveal .slides section.slide-quote[data-background-image] .attribution strong,
+.reveal .slides section.slide-quote[data-background-color] .attribution,
+.reveal .slides section.slide-quote[data-background-color] .attribution strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Columns / Three-columns — text not inside opaque cards */
+.reveal .slides section.slide-columns[data-background-image] .column,
+.reveal .slides section.slide-three-columns[data-background-image] .column {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.reveal .slides section.slide-columns[data-background-image] .column h3,
+.reveal .slides section.slide-three-columns[data-background-image] .column h3 {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.reveal .slides section.slide-columns[data-background-image] .column p,
+.reveal .slides section.slide-columns[data-background-image] .column li,
+.reveal .slides section.slide-three-columns[data-background-image] .column p,
+.reveal .slides section.slide-three-columns[data-background-image] .column li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.reveal .slides section.slide-columns[data-background-image] li::marker,
+.reveal .slides section.slide-three-columns[data-background-image] li::marker {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slide header border over dark overlay */
+.reveal .slides section[data-background-image]:not(.slide-hero):not(.slide-image-overlay) .slide-header {
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
 
 /* ============================================
    CONTROLS & PROGRESS
@@ -1586,42 +1740,6 @@ html, body {
 }
 
 /* ============================================
-   EXIT BUTTON
-   ============================================ */
-
-.exit-button {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  background: white;
-  border: 1px solid var(--color-slate-200);
-  border-radius: 4px;
-  color: var(--color-slate-500);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  opacity: 0.7;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.exit-button:hover {
-  opacity: 1;
-  color: var(--color-primary-600);
-  border-color: var(--color-primary-200);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.exit-button svg {
-  width: 10px;
-  height: 10px;
-}
-
-/* ============================================
    SPEAKER NOTES
    ============================================ */
 
@@ -1641,6 +1759,15 @@ html, body {
 }
 
 /* ============================================
+   AUTO-ANIMATE
+   Prevent clipping during morph transitions
+   ============================================ */
+
+.reveal section[data-auto-animate] {
+  overflow: visible;
+}
+
+/* ============================================
    SLIDE FOOTER
    Three zones: slide number | logo + title | references
    ============================================ */
@@ -1653,12 +1780,11 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid var(--color-slate-200);
-  background: var(--color-slate-50);
+  border-top: none;
+  background: transparent;
   font-family: var(--font-body);
   font-size: 12px;
   color: var(--color-slate-500);
-  border-radius: 0 0 6px 6px;
 }
 
 /* Left: Slide number */
@@ -1766,6 +1892,42 @@ html, body {
 .reveal .slides section.slide-image-overlay .slide-footer {
   position: relative;
   z-index: 2;
+}
+
+/* ============================================
+   VIEWPORT FOOTER
+   Fixed at actual screen bottom, outside Reveal.js canvas.
+   In-canvas footers are hidden (still rendered for data/PDF).
+   ============================================ */
+
+/* Hide in-canvas footers in normal view */
+.reveal .slides .slide-footer {
+  display: none;
+}
+
+/* Show in-canvas footers in PDF mode */
+.pdf-export .reveal .slides .slide-footer {
+  display: flex;
+}
+
+/* Viewport footer — fixed at screen bottom */
+#viewport-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+#viewport-footer .slide-footer {
+  height: 32px;
+  padding: 0 20px;
+  font-size: 11px;
+}
+
+/* Hide viewport footer in PDF mode */
+.pdf-export #viewport-footer {
+  display: none;
 }
 
 /* ============================================
@@ -1908,17 +2070,7 @@ html, body {
 
 @media print {
   html, body {
-    background: white !important;
-  }
-
-  .exit-button {
-    display: none;
-  }
-
-  .reveal .slides > section,
-  .reveal .slides > section > section {
-    box-shadow: none;
-    border: 1px solid #ddd;
+    background: var(--color-background) !important;
   }
 
   .reveal .slides section {
@@ -1928,21 +2080,13 @@ html, body {
 
 /* PDF export mode — triggered by ?pdf query param */
 .pdf-export {
-  background: white !important;
+  background: var(--color-background) !important;
 }
 
-.pdf-export .exit-button,
 .pdf-export .section-progress-dots,
 .pdf-export .reveal .controls,
 .pdf-export .reveal .progress {
   display: none !important;
-}
-
-.pdf-export .reveal .slides > section,
-.pdf-export .reveal .slides > section > section {
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
 }
 
 /* ============================================
@@ -2044,7 +2188,7 @@ html, body {
   bottom: 0;
   width: 4px;
   height: 4px;
-  background: white;
+  background: var(--color-background);
   cursor: pointer;
   pointer-events: auto;
   transform: translateX(-50%);  /* Center dot on position */

@@ -1,0 +1,98 @@
+/* ============================================
+   MIDNIGHT THEME
+   Dark navy background with light text and deep indigo primary.
+
+   Usage: Add `theme: midnight` to presentation frontmatter
+   ============================================ */
+
+:root {
+  /* Primary Color Scale — deep indigo */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+
+  /* Dark semantic mappings */
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-alt: #334155;
+  --color-border: #334155;
+  --color-border-strong: #475569;
+
+  --color-text: #cbd5e1;
+  --color-text-heading: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+
+  --footer-brand-name: 'lazyslides';
+}
+
+html, body {
+  background: #0f172a;
+}
+
+/* Dark footer */
+.slide-footer {
+  background: #1e293b;
+  border-top: 1px solid #334155;
+  color: #94a3b8;
+}
+
+/* Dark metric cards */
+.reveal .slides section.slide-metrics .metric-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* Dark table styling */
+.reveal .slides section.slide-table td {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.reveal .slides section.slide-table tr:nth-child(even) td {
+  background: #0f172a;
+}
+
+.reveal .slides section.slide-table th {
+  background: #334155;
+  border-bottom-color: #475569;
+}
+
+/* Dark comparison */
+.reveal .slides section.slide-comparison td:first-child {
+  background: #1e293b;
+}
+
+.reveal .slides section.slide-comparison td:last-child {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.reveal .slides section.slide-comparison th:first-child {
+  background: #334155;
+}
+
+/* Dark timeline */
+.reveal .slides section.slide-timeline .event-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.reveal .slides section.slide-timeline .timeline-axis {
+  background: #334155;
+}
+
+/* Exit button */
+.exit-button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+/* Code blocks in dark theme */
+.reveal .slides section.slide-code pre code {
+  background: #1e293b;
+}

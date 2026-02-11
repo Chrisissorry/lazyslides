@@ -1,6 +1,7 @@
 {# TEMPLATE: hero — Full-bleed background image with dark overlay and optional text box. #}
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
 {% if slide.image %}{% set img_src = slide.image | resolveImage %}{% endif %}
-<section class="slide-hero"{% if slide.image %} style="background-image: url('{{ img_src }}'); background-size: cover; background-position: center;"{% elif slide.color %} style="background-color: {{ slide.color }};"{% endif %}>
+<section class="slide-hero"{% if slide.image %} data-background-image="{{ img_src }}" data-background-size="cover" data-background-position="center"{% elif slide.color %} data-background-color="{{ slide.color }}"{% endif %}{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <h1>{{ slide.title }}</h1>
     {% if slide.text %}<p>{{ slide.text }}</p>{% endif %}

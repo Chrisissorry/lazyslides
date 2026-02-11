@@ -1,5 +1,6 @@
 {# TEMPLATE: metrics — Key statistics display with 2-4 metric cards. #}
-<section class="slide-metrics">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-metrics"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>
@@ -11,7 +12,7 @@
     {% else %}{% set cols_class = "cols-3" %}{% endif %}
     <div class="metrics-grid {{ cols_class }}">
       {% for metric in slide.metrics %}
-      <div class="metric-card">
+      <div class="metric-card{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
         <div class="value{% if metric.color %} {{ metric.color }}{% endif %}">{{ metric.value }}</div>
         <div class="label">{{ metric.label }}</div>
         {% if metric.context %}<div class="context">{{ metric.context }}</div>{% endif %}

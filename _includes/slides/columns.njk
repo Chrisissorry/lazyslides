@@ -1,11 +1,12 @@
 {# TEMPLATE: columns — Two-column layout for side-by-side content. #}
-<section class="slide-columns">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-columns"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>
     </div>
     <div class="columns">
-      <div class="column">
+      <div class="column{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
         {% if slide.left_title %}<h3>{{ slide.left_title }}</h3>{% endif %}
         {% if slide.left_text %}<p>{{ slide.left_text }}</p>{% endif %}
         {% if slide.left_items %}
@@ -15,7 +16,7 @@
         </ul>
         {% endif %}
       </div>
-      <div class="column">
+      <div class="column{% if slide.fragment %} fragment {{ slide.fragment }}{% endif %}">
         {% if slide.right_title %}<h3>{{ slide.right_title }}</h3>{% endif %}
         {% if slide.right_text %}<p>{{ slide.right_text }}</p>{% endif %}
         {% if slide.right_items %}

@@ -1,5 +1,6 @@
 {# TEMPLATE: section — Chapter divider slide for separating presentation sections. #}
-<section class="slide-section">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-section"{{ sectionAttrs(slide) }}>
   <h2>{{ slide.title }}</h2>
   {% if slide.subtitle %}<p class="subtitle">{{ slide.subtitle }}</p>{% endif %}
   {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}

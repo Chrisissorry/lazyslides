@@ -1,0 +1,15 @@
+{# Reusable macro for emitting data-* attributes on <section> tags.
+   Handles transitions, auto-animate, backgrounds (color, gradient, image, video). #}
+{% macro sectionAttrs(slide) %}
+{%- if slide.transition %} data-transition="{{ slide.transition }}"{% endif %}
+{%- if slide.transition_speed %} data-transition-speed="{{ slide.transition_speed }}"{% endif %}
+{%- if slide.auto_animate %} data-auto-animate{% endif %}
+{%- if slide.auto_animate_easing %} data-auto-animate-easing="{{ slide.auto_animate_easing }}"{% endif %}
+{%- if slide.auto_animate_duration %} data-auto-animate-duration="{{ slide.auto_animate_duration }}"{% endif %}
+{%- if slide.background_color %} data-background-color="{{ slide.background_color }}"{% endif %}
+{%- if slide.background_gradient %} data-background="{{ slide.background_gradient }}"{% endif %}
+{%- if slide.background_image %} data-background-image="{{ slide.background_image }}"{% endif %}
+{%- if slide.background_video %} data-background-video="{{ slide.background_video }}"{% endif %}
+{%- if slide.background_video_loop %} data-background-video-loop{% endif %}
+{%- if slide.background_video_muted %} data-background-video-muted{% endif %}
+{%- endmacro %}

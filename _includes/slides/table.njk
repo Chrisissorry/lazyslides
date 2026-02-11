@@ -1,5 +1,6 @@
 {# TEMPLATE: table — Multi-column data table with neutral styling and zebra striping. #}
-<section class="slide-table">
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-table"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
     <div class="slide-header">
       <h2>{{ slide.title }}</h2>

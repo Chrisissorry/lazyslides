@@ -78,6 +78,13 @@ describe("plugin registration", () => {
     expect(assetCopy).toBeDefined();
   });
 
+  it("adds passthrough copy for presentation assets", () => {
+    const assetCopy = calls.passthroughCopies.find(
+      (c) => c === "presentations/*/assets"
+    );
+    expect(assetCopy).toBeDefined();
+  });
+
   it("adds site global data", () => {
     expect(calls.globalData.site).toBeDefined();
     expect(calls.globalData.site.title).toBeDefined();
