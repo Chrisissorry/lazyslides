@@ -10,7 +10,7 @@ Leverage your favorite AI agent to build simple, yet meaningful slide decks.
 
 Built on [Eleventy](https://www.11ty.dev/), [Reveal.js](https://revealjs.com), and [Tailwind CSS](https://tailwindcss.com).
 
-[Live demo](https://chrisissorry.github.io/lazyslides/presentations/example/)
+[Live demo](https://chrisissorry.github.io/lazyslides/presentations/)
 
 ## Why
 
