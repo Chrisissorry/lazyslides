@@ -15,9 +15,6 @@ importers:
 
   .:
     dependencies:
-      '@terrastruct/d2':
-        specifier: ^0.1.33
-        version: 0.1.33
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.1
@@ -40,6 +37,10 @@ importers:
       vitest:
         specifier: ^4.1.2
         version: 4.1.2(@types/node@25.2.1)(vite@7.3.1(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.32.0))
+    optionalDependencies:
+      '@terrastruct/d2':
+        specifier: ^0.1.33
+        version: 0.1.33
 
 packages:
 
@@ -2192,7 +2193,8 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.2.2
       '@tailwindcss/oxide-win32-x64-msvc': 4.2.2
 
-  '@terrastruct/d2@0.1.33': {}
+  '@terrastruct/d2@0.1.33':
+    optional: true
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
