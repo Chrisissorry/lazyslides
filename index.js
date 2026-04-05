@@ -27,10 +27,18 @@ export default function lazyslides(eleventyConfig, options = {}) {
   // 1b. D2 diagram compilation (async filter)
   // ---------------------------------------------------------------
   let d2Instance = null;
+  let d2Available = null; // null = unknown, true/false after check
   async function getD2() {
+    if (d2Available === false) return null;
     if (!d2Instance) {
-      const { D2 } = await import("@terrastruct/d2");
-      d2Instance = new D2();
+      try {
+        const { D2 } = await import("@terrastruct/d2");
+        d2Instance = new D2();
+        d2Available = true;
+      } catch {
+        d2Available = false;
+        return null;
+      }
     }
     return d2Instance;
   }
@@ -80,6 +88,13 @@ export default function lazyslides(eleventyConfig, options = {}) {
     if (d2Sources.length === 0) return;
 
     const d2 = await getD2();
+    if (!d2) {
+      console.log("[LazySlides] @terrastruct/d2 not installed — diagram slides will show placeholders. Install it with: pnpm add @terrastruct/d2");
+      for (const source of d2Sources) {
+        d2Cache.set(source, `<div class="d2-error">@terrastruct/d2 is not installed. Run: pnpm add @terrastruct/d2</div>`);
+      }
+      return;
+    }
     for (const source of d2Sources) {
       try {
         const result = await d2.compile(source);
