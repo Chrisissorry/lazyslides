@@ -30,7 +30,9 @@ describe("footer visibility", () => {
   let slides;
 
   beforeAll(() => {
-    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
+    if (!fs.existsSync(htmlPath)) {
+      execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
+    }
     html = fs.readFileSync(htmlPath, "utf-8");
     slides = parseSlides(html);
   });

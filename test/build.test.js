@@ -5,9 +5,16 @@ import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
 
+function ensureBuild() {
+  const siteDir = path.join(root, "_site/presentations/example/index.html");
+  if (!fs.existsSync(siteDir)) {
+    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
+  }
+}
+
 describe("build smoke test", () => {
   it("produces expected output files", () => {
-    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
+    ensureBuild();
     const expected = [
       "_site/presentations/example/index.html",
       "_site/presentations/index.html",
@@ -21,7 +28,7 @@ describe("build smoke test", () => {
   });
 
   it("does not output non-index markdown files as presentations", () => {
-    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
+    ensureBuild();
     const outlineOutput = path.join(root, "_site/presentations/outline/index.html");
     expect(fs.existsSync(outlineOutput), "outline.md should not produce output").toBe(false);
   });

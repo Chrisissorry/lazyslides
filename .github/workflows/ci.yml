@@ -28,11 +28,11 @@ jobs:
       - name: Validate presentations
         run: pnpm run validate
 
-      - name: Run tests
-        run: pnpm test
-
       - name: Build
         run: pnpm run build
+
+      - name: Run tests
+        run: pnpm test
 
       - name: Pack (verify publishable)
         run: pnpm pack --dry-run
