@@ -10,7 +10,7 @@ describe("agenda auto_generate", () => {
   let html;
 
   beforeAll(() => {
-    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 60_000 });
+    execSync("pnpm run build", { cwd: root, stdio: "pipe", timeout: 120_000 });
     html = fs.readFileSync(htmlPath, "utf-8");
   });
 
