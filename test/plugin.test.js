@@ -4,6 +4,7 @@ import lazyslides from "../index.js";
 function createMockConfig() {
   const calls = {
     filters: {},
+    events: {},
     templates: {},
     passthroughCopies: [],
     globalData: {},
@@ -15,6 +16,9 @@ function createMockConfig() {
   const config = {
     addFilter(name, fn) {
       calls.filters[name] = fn;
+    },
+    on(event, fn) {
+      calls.events[event] = fn;
     },
     amendLibrary(engine, fn) {
       calls.amendLibraryCalls.push({ engine, fn });

@@ -1,6 +1,6 @@
 {
   "name": "lazyslides",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Slide decks with native agentic AI integration",
   "license": "MIT",
   "author": "Chris Tietz",
@@ -66,17 +66,27 @@
   "dependencies": {
     "js-yaml": "^4.1.0"
   },
+  "optionalDependencies": {
+    "@terrastruct/d2": "^0.1.33"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@tailwindcss/cli": "^4.0.0",
+    "@tailwindcss/cli": "4.1.18",
     "concurrently": "^9.0.0",
     "decktape": "^3.14.0",
-    "tailwindcss": "^4.1.18",
-    "vitest": "^4.0.18"
+    "tailwindcss": "4.1.18",
+    "vitest": "^4.1.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "puppeteer"
-    ]
+    ],
+    "overrides": {
+      "picomatch@<2.3.2": ">=2.3.2",
+      "picomatch@>=4.0.0 <4.0.4": ">=4.0.4",
+      "brace-expansion@<1.1.13": ">=1.1.13",
+      "basic-ftp@<5.2.0": ">=5.2.0",
+      "@xmldom/xmldom@<0.8.12": ">=0.8.12"
+    }
   }
 }

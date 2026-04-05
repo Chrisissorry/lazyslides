@@ -81,7 +81,7 @@ slides:
   title: The Metrics Template
   fragment: fade-in
   metrics:
-    - value: "17"
+    - value: "19"
       label: "Templates"
       context: "Slide types in the engine"
       color: mint
