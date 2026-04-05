@@ -1,0 +1,34 @@
+{# TEMPLATE: diagram — D2 diagram rendered to inline SVG at build time.
+   Fields:
+     title*     — slide title
+     d2         — inline D2 source (multiline with |)
+     d2_file    — path to .d2 file (alternative to inline d2)
+     caption    — optional description below diagram
+     notes      — speaker notes
+     reference / reference_link / references — source attribution
+#}
+{% from "slides/_section-attrs.njk" import sectionAttrs %}
+<section class="slide-diagram"{{ sectionAttrs(slide) }}>
+  <div class="slide-body">
+    <div class="slide-header">
+      <h2>{{ slide.title }}</h2>
+    </div>
+    <div class="diagram-container">
+      {% if slide.d2 %}
+        {{ slide.d2 | compileD2 | safe }}
+      {% elif slide.d2_file %}
+        <div class="d2-error">d2_file is not yet supported. Use inline d2 instead.</div>
+      {% else %}
+        <div class="d2-error">No d2 source provided. Add a 'd2' or 'd2_file' field.</div>
+      {% endif %}
+    </div>
+    {% if slide.caption %}<p class="diagram-caption">{{ slide.caption }}</p>{% endif %}
+    {% if slide.notes %}<aside class="notes">{{ slide.notes }}</aside>{% endif %}
+  </div>
+  {% if global_footer and not slide.hide_footer %}
+  {% set reference = slide.reference %}
+  {% set reference_link = slide.reference_link %}
+  {% set references = slide.references %}
+  {% include "slides/footer.njk" %}
+  {% endif %}
+</section>

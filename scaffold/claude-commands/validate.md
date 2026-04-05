@@ -19,7 +19,7 @@ Review the output and categorize issues:
 - **Wrong comparison format** — comparison slides must use `rows:` with `left`/`right` pairs
 
 ### Warnings (should fix)
-- **Unknown template** — template name doesn't match one of the 17 valid types
+- **Unknown template** — template name doesn't match one of the 19 valid types
 - **Missing title** — slide has no title (except `quote` which doesn't need one)
 - **Missing image** — image path in YAML doesn't exist on disk
 - **Hidden slide** — possible slide definition commented out

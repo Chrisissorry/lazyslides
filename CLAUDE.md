@@ -232,6 +232,15 @@ Fields marked with `*` are required.
   - `slide`* — 0-based slide index to link to
 - `reference` / `reference_link` / `references`
 
+#### `diagram` — D2 diagram (compiled to inline SVG at build time)
+- `title`* — slide title
+- `d2` — inline D2 source string (use `|` for multiline YAML)
+- `d2_file` — path to a `.d2` file (alternative to inline `d2`; not yet supported)
+- `caption` — optional description below diagram
+- `reference` / `reference_link` / `references`
+
+Note: requires `@terrastruct/d2` npm dependency (included in the package). Exactly one of `d2` or `d2_file` must be provided.
+
 ## Common Patterns
 
 ### Nested lists
@@ -433,7 +442,7 @@ This repo is both the npm package source and a development environment:
 - **`cli.js`** — Unified CLI (`lazyslides init|validate|renumber|pdf`)
 - **`lib/`** — CLI module implementations (init, validate, renumber, export-pdf)
 - **`scaffold/`** — Template files copied by `lazyslides init`
-- **`_includes/slides/`** — 18 slide templates + footer + nested list macro + section attrs macro
+- **`_includes/slides/`** — 19 slide templates + footer + nested list macro + section attrs macro
 - **`_layouts/`** — Reveal.js wrapper + index page layout (registered as virtual templates by plugin)
 - **`assets/`** — Vendored Reveal.js, GLightbox, theme CSS
 - **`src/styles.css`** — All design tokens and slide CSS (Tailwind CSS)
@@ -483,7 +492,7 @@ Validation runs automatically before dev and build commands.
 - Valid YAML syntax
 - Required fields: `title`, `slides`
 - Each slide has a `template` field
-- Template names match the 18 valid types
+- Template names match the 19 valid types
 - Comparison structure validation
 - Image path existence
 - Theme name (valid LazySlides themes: default, card, midnight, forest, corporate, sunset)

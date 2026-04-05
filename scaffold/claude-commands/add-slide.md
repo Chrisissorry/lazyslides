@@ -41,6 +41,7 @@ Ask the user which template to use. Show this reference:
 | `code` | Code snippet with syntax highlighting |
 | `image-overlay` | Full image with positioned text box |
 | `agenda` | Clickable table of contents |
+| `diagram` | D2 diagram compiled to inline SVG |
 
 ## Step 4: Gather Content
 

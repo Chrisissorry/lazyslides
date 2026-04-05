@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Eleventy plugin with Reveal.js 5 integration
-- 17 slide templates: title, section, content, center, hero, metrics, comparison, columns, quote, image-overlay, code, timeline, funnel, split, split-wide, table, agenda
+- 19 slide templates: title, section, content, center, hero, metrics, comparison, columns, quote, image-overlay, code, timeline, funnel, split, split-wide, table, agenda, diagram
 - Tailwind CSS 4 design system with semantic color tokens
 - CLI commands: `init`, `validate`, `renumber`, `pdf`
 - Project scaffolding via `lazyslides init`

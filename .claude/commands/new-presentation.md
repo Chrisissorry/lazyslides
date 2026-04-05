@@ -90,6 +90,7 @@ Review each slide in the outline and propose a template. The available templates
 | `table` | Data table with headers |
 | `code` | Code snippet with syntax highlighting |
 | `image-overlay` | Image with text overlay |
+| `diagram` | D2 diagram compiled to inline SVG |
 
 Read each template file's docblock comment for exact YAML structure and options.
 
