@@ -71,10 +71,10 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/cli": "4.1.18",
     "concurrently": "^9.0.0",
     "decktape": "^3.14.0",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "4.1.18",
     "vitest": "^4.1.2"
   },
   "pnpm": {
