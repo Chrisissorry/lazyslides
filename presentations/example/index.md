@@ -352,50 +352,7 @@ slides:
     This slide traces the LazySlides build pipeline as its example content.
     Best with 3-5 stages for visual clarity.
 
-# Slide 22: The Diagram Template
-- template: diagram
-  title: The Diagram Template
-  d2: |
-    direction: right
-    yaml: YAML Input {
-      style: {
-        fill: "#E8F0FE"
-        stroke: "#4285F4"
-        border-radius: 8
-      }
-    }
-    validate: Validation {
-      style: {
-        fill: "#E6F4EA"
-        stroke: "#34A853"
-        border-radius: 8
-      }
-    }
-    nunjucks: Nunjucks {
-      style: {
-        fill: "#FFF3E0"
-        stroke: "#F9AB00"
-        border-radius: 8
-      }
-    }
-    revealjs: Reveal.js {
-      style: {
-        fill: "#FCE4EC"
-        stroke: "#E91E63"
-        border-radius: 8
-      }
-    }
-    yaml -> validate: check
-    validate -> nunjucks: compile
-    nunjucks -> revealjs: render
-  caption: "The LazySlides build pipeline — authored in D2, compiled to SVG at build time"
-  notes: |
-    The diagram template renders D2 diagrams to inline SVG during the Eleventy build.
-    Write D2 source directly in YAML using the d2 field with a multiline string.
-    D2 supports flowcharts, architecture diagrams, sequence diagrams, and more.
-    The SVG is inlined — no external images, fully scalable, and styleable.
-
-# Slide 23: Auto-Animate in Action (Step 1)
+# Slide 22: Auto-Animate in Action (Step 1)
 - template: code
   title: "Auto-Animate in Action"
   auto_animate: true
@@ -407,7 +364,7 @@ slides:
     between consecutive slides. Both slides need auto_animate: true.
     Watch the code block expand smoothly on the next slide.
 
-# Slide 24: Auto-Animate in Action (Step 2)
+# Slide 23: Auto-Animate in Action (Step 2)
 - template: code
   title: "Auto-Animate in Action"
   auto_animate: true
@@ -423,7 +380,7 @@ slides:
 # CLOSING
 # =============================================================================
 
-# Slide 25: Tips for Great Decks
+# Slide 24: Tips for Great Decks
 - template: content
   title: Tips for Great Decks
   lead: "Design principles baked into the engine"
@@ -439,7 +396,7 @@ slides:
     The engine validates structure, but good content still requires human judgment.
     When in doubt, simplify — fewer words, more white space, clearer hierarchy.
 
-# Slide 26: Closing
+# Slide 25: Closing
 - template: title
   title: LazySlides
   subtitle: "YAML In. Slides Out."
