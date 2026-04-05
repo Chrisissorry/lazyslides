@@ -24,6 +24,82 @@ export default function lazyslides(eleventyConfig, options = {}) {
   });
 
   // ---------------------------------------------------------------
+  // 1b. D2 diagram compilation (async filter)
+  // ---------------------------------------------------------------
+  let d2Instance = null;
+  async function getD2() {
+    if (!d2Instance) {
+      const { D2 } = await import("@terrastruct/d2");
+      d2Instance = new D2();
+    }
+    return d2Instance;
+  }
+
+  // Pre-compile D2 diagrams before Nunjucks renders, because Nunjucks
+  // async filters/shortcodes are unreliable inside {% for %} loops.
+  // We store compiled SVGs in a map keyed by source hash, then look them
+  // up synchronously via a regular filter during template rendering.
+  const d2Cache = new Map();
+
+  eleventyConfig.addFilter("compileD2", (source) => {
+    if (!source) return "";
+    const cached = d2Cache.get(source);
+    if (cached) return cached;
+    return `<div class="d2-error">D2 diagram was not pre-compiled.</div>`;
+  });
+
+  eleventyConfig.on("eleventy.before", async ({ directories }) => {
+    // Scan all presentation files for D2 source blocks and pre-compile them
+    const presentationsDir = path.join(directories.input || ".", "presentations");
+    if (!fs.existsSync(presentationsDir)) return;
+
+    const { default: yaml } = await import("js-yaml");
+    const entries = fs.readdirSync(presentationsDir, { withFileTypes: true });
+    const d2Sources = [];
+
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name === "_template") continue;
+      const indexPath = path.join(presentationsDir, entry.name, "index.md");
+      if (!fs.existsSync(indexPath)) continue;
+
+      const content = fs.readFileSync(indexPath, "utf-8");
+      const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+      if (!fmMatch) continue;
+
+      try {
+        const data = yaml.load(fmMatch[1]);
+        if (!data?.slides) continue;
+        for (const slide of data.slides) {
+          if (slide.template === "diagram" && slide.d2) {
+            d2Sources.push(slide.d2);
+          }
+        }
+      } catch { /* skip invalid YAML */ }
+    }
+
+    if (d2Sources.length === 0) return;
+
+    const d2 = await getD2();
+    for (const source of d2Sources) {
+      try {
+        const result = await d2.compile(source);
+        const svg = await d2.render(result.diagram, {
+          ...result.renderOptions,
+          noXMLTag: true,
+          pad: 20,
+        });
+        d2Cache.set(source, svg);
+      } catch (err) {
+        const safeMsg = (err.message || String(err))
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        d2Cache.set(source, `<div class="d2-error">${safeMsg}</div>`);
+      }
+    }
+  });
+
+  // ---------------------------------------------------------------
   // 2. Nunjucks search paths — makes {% include "slides/…" %} and
   //    layout: presentation.njk resolve to files inside the package.
   //    User-local paths are searched first (Eleventy default) so

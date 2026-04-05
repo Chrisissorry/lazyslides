@@ -26,7 +26,7 @@ LazySlides separates them. You write slides as structured YAML — the format AI
 
 ## Features
 
-- **17 slide templates** — title, content, metrics, comparison, timeline, funnel, code, and more
+- **19 slide templates** — title, content, metrics, comparison, diagram, timeline, funnel, code, and more
 - **Speaker view** — press S for notes, timer, and next-slide preview
 - **Section progress bar** — visual progress dots with section markers; click to jump between sections
 - **Source references** — attach citations to any slide, rendered as linked footnotes
@@ -128,7 +128,7 @@ Supporting files (outlines, notes, PDFs, images) go alongside `index.md` in the 
 
 ## Templates
 
-17 built-in templates cover common slide patterns:
+19 built-in templates cover common slide patterns:
 
 | Template | Description |
 |----------|-------------|
@@ -149,6 +149,7 @@ Supporting files (outlines, notes, PDFs, images) go alongside `index.md` in the 
 | `code` | Code snippet with syntax highlighting |
 | `image-overlay` | Full image with positioned text box |
 | `agenda` | Clickable table of contents (supports `auto_generate: true`) |
+| `diagram` | D2 diagram compiled to inline SVG at build time |
 
 See `CLAUDE.md` for the full field reference for each template.
 

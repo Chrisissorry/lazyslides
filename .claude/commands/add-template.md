@@ -11,7 +11,7 @@ Ask the user:
 
 ## Step 2: Choose a Name
 
-Help the user pick a kebab-case name for the template (e.g. `icon-grid`, `two-images`, `photo-grid`). The name must not conflict with the 17 built-in templates: `title`, `section`, `content`, `center`, `hero`, `metrics`, `comparison`, `columns`, `quote`, `image-overlay`, `code`, `timeline`, `funnel`, `split`, `split-wide`, `table`, `agenda`.
+Help the user pick a kebab-case name for the template (e.g. `icon-grid`, `two-images`, `photo-grid`). The name must not conflict with the 19 built-in templates: `title`, `section`, `content`, `center`, `hero`, `metrics`, `comparison`, `columns`, `quote`, `image-overlay`, `code`, `timeline`, `funnel`, `split`, `split-wide`, `table`, `agenda`, `diagram`.
 
 ## Step 3: Pick a Starting Point
 

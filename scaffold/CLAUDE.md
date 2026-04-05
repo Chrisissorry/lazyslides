@@ -190,6 +190,15 @@ Fields marked with `*` are required.
   - `slide`* — 0-based slide index to link to
 - `reference` / `reference_link` / `references`
 
+#### `diagram` — D2 diagram (compiled to inline SVG at build time)
+- `title`* — slide title
+- `d2` — inline D2 source string (use `|` for multiline YAML)
+- `d2_file` — path to a `.d2` file (alternative to inline `d2`; not yet supported)
+- `caption` — optional description below diagram
+- `reference` / `reference_link` / `references`
+
+Note: requires `@terrastruct/d2` npm dependency (included in the package). Exactly one of `d2` or `d2_file` must be provided.
+
 ## Common Patterns
 
 ### Nested lists

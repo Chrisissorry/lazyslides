@@ -22,7 +22,7 @@ All slide content lives in `presentations/*/index.md` as YAML frontmatter betwee
          - "Child 1"
          - "Child 2"
    ```
-3. **Only use valid templates**: `title`, `section`, `content`, `center`, `hero`, `metrics`, `comparison`, `columns`, `quote`, `image-overlay`, `code`, `timeline`, `funnel`, `split`, `split-wide`, `table`, `agenda`
+3. **Only use valid templates**: `title`, `section`, `content`, `center`, `hero`, `metrics`, `comparison`, `columns`, `quote`, `image-overlay`, `code`, `timeline`, `funnel`, `split`, `split-wide`, `table`, `agenda`, `diagram`
 4. **Image paths** are relative to the presentation folder (e.g., `images/photo.jpg`)
 5. **Do NOT add** `layout: presentation` — it is set automatically by `presentations/presentations.11tydata.js`
 6. **Read the template docblock** in `_includes/slides/{template}.njk` before generating slide YAML to verify field names and required fields

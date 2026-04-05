@@ -1,6 +1,6 @@
 {
   "name": "lazyslides",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Slide decks with native agentic AI integration",
   "license": "MIT",
   "author": "Chris Tietz",
@@ -64,6 +64,7 @@
     "@11ty/eleventy": "^3.0.0"
   },
   "dependencies": {
+    "@terrastruct/d2": "^0.1.33",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {

@@ -2235,3 +2235,67 @@ html, body {
 .section-progress-dots .section-dot:hover::after {
   opacity: 1;
 }
+
+/* ============================================
+   SLIDE: DIAGRAM
+   D2 diagrams rendered to inline SVG
+   ============================================ */
+
+.reveal .slides section.slide-diagram {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100%;
+  padding: 0;
+}
+
+.reveal .slides section.slide-diagram .slide-body {
+  flex: 1;
+  padding: var(--slide-padding);
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.reveal .slides section.slide-diagram .slide-header {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-primary-500);
+}
+
+.reveal .slides section.slide-diagram .diagram-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.reveal .slides section.slide-diagram .diagram-container svg {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+}
+
+.reveal .slides section.slide-diagram .diagram-caption {
+  text-align: center;
+  font-size: 0.75em;
+  color: var(--color-text-muted);
+  margin-top: 0.5em;
+}
+
+.reveal .slides section.slide-diagram .d2-error {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 1em;
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  white-space: pre-wrap;
+  text-align: left;
+}
