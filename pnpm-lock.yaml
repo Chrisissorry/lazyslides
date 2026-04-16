@@ -15,6 +15,9 @@ importers:
 
   .:
     dependencies:
+      decktape:
+        specifier: ^3.14.0
+        version: 3.15.0
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.1
@@ -28,9 +31,6 @@ importers:
       concurrently:
         specifier: ^9.0.0
         version: 9.2.1
-      decktape:
-        specifier: ^3.14.0
-        version: 3.15.0
       tailwindcss:
         specifier: 4.1.18
         version: 4.1.18
