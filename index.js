@@ -112,6 +112,14 @@ export default function lazyslides(eleventyConfig, options = {}) {
         d2Cache.set(source, `<div class="d2-error">${safeMsg}</div>`);
       }
     }
+
+    // Terminate the D2 worker thread so the Node process can exit cleanly.
+    // The D2 class spawns a Worker for WASM but never exposes a cleanup method.
+    if (d2Instance?.worker) {
+      await d2Instance.worker.terminate();
+      d2Instance = null;
+      d2Available = null;
+    }
   });
 
   // ---------------------------------------------------------------
