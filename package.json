@@ -74,7 +74,7 @@
     "@11ty/eleventy": "^3.0.0",
     "@tailwindcss/cli": "4.1.18",
     "concurrently": "^9.0.0",
-    "tailwindcss": "4.1.18",
+    "tailwindcss": "4.2.4",
     "vite": "^7.3.2",
     "vitest": "^4.1.5"
   },
