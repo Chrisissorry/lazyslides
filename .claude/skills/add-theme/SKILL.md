@@ -9,6 +9,7 @@ allowed-tools:
   - Read
   - Write
   - Bash
+user-invocable: true
 effort: medium
 ---
 

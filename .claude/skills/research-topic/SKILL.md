@@ -11,6 +11,7 @@ allowed-tools:
   - WebFetch
   - Read
   - Write
+user-invocable: true
 effort: high
 ---
 

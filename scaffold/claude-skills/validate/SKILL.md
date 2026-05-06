@@ -9,6 +9,7 @@ allowed-tools:
   - Bash
   - Read
   - Edit
+user-invocable: true
 effort: low
 ---
 

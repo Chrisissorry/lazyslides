@@ -11,6 +11,7 @@ allowed-tools:
   - Write
   - Edit
   - Bash
+user-invocable: true
 effort: high
 ---
 
