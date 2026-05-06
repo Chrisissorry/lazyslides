@@ -1,4 +1,23 @@
-{# TEMPLATE: hero — Full-bleed background image with dark overlay and optional text box. #}
+{#
+  TEMPLATE: hero — Full-browser-background image with headline text. NOT for image-only slides.
+
+  The image is placed via Reveal.js data-background-image on the <section> element, which fills
+  the entire browser window — not just the slide area. In windowed or embedded mode the image
+  bleeds outside the slide frame into surrounding white space. Use only when you want that
+  dramatic full-bleed effect. For an image displayed inside the slide, use `center` with `image:`
+  instead (renders as a constrained <img> element).
+
+  Fields:
+    title*         — big headline rendered as <h1> over the background
+    text           — supporting paragraph below the headline
+    image          — path to background image (sets data-background-image; fills entire browser)
+    color          — hex fallback/solid background color used when no image (e.g. "#1a1a2e")
+    box_title      — heading inside an optional overlay text box
+    box_text       — paragraph inside the overlay text box
+    box_items      — bullet list inside the overlay text box
+    show_footer    — show footer on this slide (default: hidden on hero slides)
+    notes          — speaker notes
+#}
 {% from "slides/_section-attrs.njk" import sectionAttrs %}
 {% if slide.image %}{% set img_src = slide.image | resolveImage %}{% endif %}
 <section class="slide-hero"{% if slide.image %} data-background-image="{{ img_src }}" data-background-size="cover" data-background-position="center"{% elif slide.color %} data-background-color="{{ slide.color }}"{% endif %}{{ sectionAttrs(slide) }}>
