@@ -1,3 +1,18 @@
+---
+name: add-theme
+description: >
+  Guides creating a custom CSS theme for a LazySlides project, including
+  color palette, typography, footer branding, and theater background.
+when_to_use: >
+  Use when the user wants to create or apply a custom visual theme to their presentation.
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+user-invocable: true
+effort: medium
+---
+
 # Add Theme
 
 You are helping the user create a custom CSS theme for their LazySlides project.

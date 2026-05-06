@@ -1,3 +1,19 @@
+---
+name: new-presentation
+description: >
+  Full guided workflow for creating a LazySlides presentation from scratch —
+  gathers requirements, builds an outline, maps templates, and generates index.md.
+when_to_use: >
+  Use when the user wants to create a new presentation or start a new deck from scratch.
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
+user-invocable: true
+effort: high
+---
+
 # Create New Presentation
 
 You are helping the user create a new presentation in this Eleventy + Reveal.js presentation system.

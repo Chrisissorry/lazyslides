@@ -1,3 +1,18 @@
+---
+name: validate
+description: >
+  Runs LazySlides YAML validation, interprets errors and warnings,
+  proposes fixes, and applies approved corrections.
+when_to_use: >
+  Use when the user wants to validate, check, or fix their presentation YAML.
+allowed-tools:
+  - Bash
+  - Read
+  - Edit
+user-invocable: true
+effort: low
+---
+
 # Validate Presentations
 
 You are helping the user validate their presentation YAML and fix any issues.
