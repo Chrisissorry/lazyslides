@@ -5,8 +5,13 @@ description: >
   /Users/john_cusack/Documents/projects/presentations project.
   Covers the command, pipeline, known hang causes, how to verify the pipeline
   with the test fixture, and debugging steps when export fails.
+when_to_use: >
   Use whenever the user asks to "export", "make", "generate", or "create"
   a PDF of a presentation, or when PDF export fails or hangs.
+allowed-tools:
+  - Bash
+  - Read
+effort: medium
 ---
 
 # LazySlides PDF Export

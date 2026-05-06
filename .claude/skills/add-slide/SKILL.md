@@ -1,3 +1,18 @@
+---
+name: add-slide
+description: >
+  Guides adding a new slide to an existing LazySlides presentation —
+  picks template, gathers content, inserts at the right position, and validates.
+when_to_use: >
+  Use when the user wants to add, insert, or append a slide to an existing presentation.
+allowed-tools:
+  - Read
+  - Edit
+  - Bash
+user-invocable: true
+effort: medium
+---
+
 # Add Slide
 
 You are helping the user add a new slide to an existing presentation.
