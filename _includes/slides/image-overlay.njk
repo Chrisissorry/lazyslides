@@ -1,4 +1,20 @@
-{# TEMPLATE: image-overlay — Full background image with positioned text box overlay. #}
+{#
+  TEMPLATE: image-overlay — Full-browser-background image with positioned text box. NOT for image-only slides.
+
+  The image is placed via Reveal.js data-background-image on the <section> element, which fills
+  the entire browser window — not just the slide area. In windowed or embedded mode the image
+  bleeds outside the slide frame into surrounding white space. Use only when you want that
+  dramatic full-bleed effect. For an image displayed inside the slide, use `center` with `image:`
+  instead (renders as a constrained <img> element).
+
+  Fields:
+    image*         — path to background image (sets data-background-image; fills entire browser)
+    title          — heading rendered inside the positioned overlay box
+    text           — paragraph rendered inside the overlay box
+    items          — bullet list rendered inside the overlay box
+    position       — overlay box position: bottom-left (default), bottom-right, top-left, top-right
+    notes          — speaker notes
+#}
 {% from "slides/_section-attrs.njk" import sectionAttrs %}
 {% set img_src = slide.image | resolveImage %}
 <section class="slide-image-overlay" data-background-image="{{ img_src }}" data-background-size="cover" data-background-position="center"{{ sectionAttrs(slide) }}>

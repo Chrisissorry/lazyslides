@@ -1,4 +1,20 @@
-{# TEMPLATE: center — Centered statement, image, or both. Image has lightbox on click. #}
+{#
+  TEMPLATE: center — Image or statement centered inside the slide. Correct choice for image-only slides.
+
+  When `image` is provided it renders as a constrained <img> element inside the slide boundaries
+  (object-fit: contain, never cropped). This is the right template when you want an image to
+  appear as slide content. Clicking the image opens it fullscreen via GLightbox.
+
+  Do NOT use hero or image-overlay for image-only slides — those templates use
+  data-background-image, which fills the entire browser window and bleeds outside the slide frame.
+
+  Fields:
+    title          — optional heading above the content
+    text           — centered statement paragraph
+    image          — image path; rendered as <img> constrained within slide dimensions
+    image_alt      — alt text for the image
+    notes          — speaker notes
+#}
 {% from "slides/_section-attrs.njk" import sectionAttrs %}
 <section class="slide-center"{{ sectionAttrs(slide) }}>
   <div class="slide-body">
