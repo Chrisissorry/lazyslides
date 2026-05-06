@@ -1,3 +1,17 @@
+---
+name: refine-slides
+description: >
+  Reviews and improves an existing LazySlides presentation — checks structure,
+  template variety, content density, design anti-patterns, and applies approved changes.
+when_to_use: >
+  Use when the user wants to improve, polish, review, or fix an existing presentation.
+allowed-tools:
+  - Read
+  - Edit
+  - Bash
+effort: medium
+---
+
 # Refine Slides
 
 You are helping the user improve an existing presentation.

@@ -1,3 +1,19 @@
+---
+name: add-template
+description: >
+  Guides creating a custom Nunjucks slide template for a LazySlides project,
+  including the .njk file structure and any required CSS.
+when_to_use: >
+  Use when the user wants to create a new slide template that doesn't exist
+  in the built-in set of 19 templates.
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
+effort: high
+---
+
 # Add Template
 
 You are helping the user create a custom slide template for their LazySlides project.

@@ -1,3 +1,19 @@
+---
+name: research-topic
+description: >
+  Researches a topic to gather statistics, quotes, comparisons, and case studies
+  for a data-driven LazySlides presentation, then saves findings as research.md.
+when_to_use: >
+  Use when the user wants to gather data, statistics, or supporting evidence
+  for a presentation topic.
+allowed-tools:
+  - WebSearch
+  - WebFetch
+  - Read
+  - Write
+effort: high
+---
+
 # Research Topic
 
 You are helping the user research a topic to build a data-driven presentation.

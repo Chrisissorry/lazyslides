@@ -1,3 +1,18 @@
+---
+name: create-outline
+description: >
+  Helps build a structured presentation outline before generating YAML —
+  covers audience, purpose, section structure, and per-slide content sketches.
+when_to_use: >
+  Use when the user wants to plan a presentation before writing slides,
+  or when starting a new deck without an existing outline.
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+effort: medium
+---
+
 # Create Outline
 
 You are helping the user create a structured outline before generating presentation YAML.
