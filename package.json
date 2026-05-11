@@ -75,7 +75,7 @@
     "@tailwindcss/cli": "4.1.18",
     "concurrently": "^9.0.0",
     "tailwindcss": "4.1.18",
-    "vite": "^7.3.2",
+    "vite": "^8.0.12",
     "vitest": "^4.1.5"
   },
   "pnpm": {
